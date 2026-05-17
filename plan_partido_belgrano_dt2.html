@@ -9,6 +9,7 @@
 <meta property="og:description" content="Diagnóstico, esquema, roles y fases del partido en una presentación visual."/>
 <meta property="og:type" content="website"/>
 <meta name="theme-color" content="#0b1220"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -142,6 +143,214 @@
   .zone-label { fill: rgba(255,255,255,0.45); font-size: 8px; text-anchor: middle; font-style: italic; font-family: system-ui, sans-serif; }
   .legend-dot { r: 5; }
   .legend-text { fill: rgba(255,255,255,0.7); font-size: 9px; font-family: system-ui, sans-serif; dominant-baseline: central; }
+
+  @media (max-width: 720px) {
+    body {
+      font-size: 14px;
+      line-height: 1.58;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    nav {
+      height: auto;
+      min-height: 48px;
+      padding: 10px 14px;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+    }
+
+    .nav-pill {
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 34px 16px 28px;
+      text-align: left;
+    }
+
+    .hero .section-title {
+      justify-content: flex-start !important;
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 10vw, 42px);
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .hero .sub {
+      margin: 0 0 18px;
+      font-size: 14px;
+      max-width: none;
+    }
+
+    .hero-chips {
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 5px 10px;
+      font-size: 11px;
+    }
+
+    .container {
+      padding: 0 14px;
+    }
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-title {
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .section-heading {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .section-lead {
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .card {
+      padding: 16px;
+      border-radius: 14px;
+    }
+
+    .card h3 {
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .card p,
+    .instr-body,
+    .phase-block p,
+    .phase-block li,
+    .verdict p {
+      font-size: 13.5px;
+    }
+
+    .diagram-label {
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .diagram-wrap {
+      margin-left: -14px;
+      margin-right: -14px;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      background: #0a1220;
+    }
+
+    .diagram-wrap svg {
+      display: block;
+      width: 620px;
+      max-width: none;
+    }
+
+    .diagram-caption {
+      font-size: 12.5px;
+      margin-bottom: 20px;
+    }
+
+    .instr {
+      gap: 10px;
+      padding: 12px 0;
+    }
+
+    .instr-num {
+      min-width: 34px;
+      font-size: 10px;
+    }
+
+    .phase-block {
+      padding: 16px;
+      border-radius: 14px;
+    }
+
+    .phase-tag {
+      white-space: normal;
+      line-height: 1.35;
+    }
+
+    .sub-table,
+    .sub-table thead,
+    .sub-table tbody,
+    .sub-table tr,
+    .sub-table th,
+    .sub-table td {
+      display: block;
+      width: 100%;
+    }
+
+    .sub-table thead {
+      display: none;
+    }
+
+    .sub-table tr {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sub-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .sub-table td {
+      padding: 3px 0;
+      border-bottom: none;
+    }
+
+    .sub-table td:first-child {
+      color: var(--blue-light);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 4px;
+    }
+
+    .verdict {
+      padding: 20px;
+    }
+
+    footer {
+      padding: 24px 16px;
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .diagram-wrap svg {
+      width: 590px;
+    }
+
+    .grid2,
+    .grid3 {
+      gap: 10px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+    }
+  }
 </style>
 </head>
 <body>
