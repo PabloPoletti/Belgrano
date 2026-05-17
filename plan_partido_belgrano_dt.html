@@ -1,0 +1,368 @@
+
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .wrap { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; }
+  h2 { font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 12px; }
+  h3 { font-size: 12px; font-weight: 500; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 10px; }
+  p { margin: 0 0 10px; }
+  .section { border-top: 0.5px solid var(--color-border-tertiary); padding: 22px 0; }
+  .section:first-child { border-top: none; padding-top: 0; }
+  .card { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 14px 16px; }
+  .card-info { background: var(--color-background-info); border-radius: var(--border-radius-lg); padding: 14px 16px; }
+  .card-warn { background: var(--color-background-warning); border-radius: var(--border-radius-lg); padding: 14px 16px; }
+  .card-danger { background: var(--color-background-danger); border-radius: var(--border-radius-lg); padding: 14px 16px; }
+  .card-success { background: var(--color-background-success); border-radius: var(--border-radius-lg); padding: 14px 16px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .pill { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 9px; border-radius: 20px; margin-right: 4px; }
+  .pill-blue { background: var(--color-background-info); color: var(--color-text-info); }
+  .pill-amber { background: #FAEEDA; color: #633806; }
+  .pill-red { background: var(--color-background-danger); color: var(--color-text-danger); }
+  .pill-green { background: var(--color-background-success); color: var(--color-text-success); }
+  .pill-gray { background: var(--color-background-secondary); color: var(--color-text-secondary); border: 0.5px solid var(--color-border-secondary); }
+  .row { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .dot-blue { background: #378ADD; }
+  .dot-green { background: #639922; }
+  .dot-red { background: #E24B4A; }
+  .dot-amber { background: #BA7517; }
+  .dot-gray { background: #888780; }
+  .phase-badge { font-size: 12px; font-weight: 500; padding: 3px 12px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+  .phase-0-30 { background: #E1F5EE; color: #085041; }
+  .phase-30-60 { background: #FAEEDA; color: #633806; }
+  .phase-60-75 { background: #FAECE7; color: #4A1B0C; }
+  .phase-75fin { background: var(--color-background-danger); color: var(--color-text-danger); }
+  .instr-row { border-bottom: 0.5px solid var(--color-border-tertiary); padding: 8px 0; display: flex; gap: 10px; align-items: flex-start; }
+  .instr-row:last-child { border-bottom: none; }
+  .instr-num { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); min-width: 20px; margin-top: 1px; }
+  .sub-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 13px; }
+  .sub-row:last-child { border-bottom: none; }
+  .sub-out { color: var(--color-text-danger); }
+  .sub-in { color: var(--color-text-success); }
+  .verdict { border-left: 3px solid var(--color-border-info); padding: 14px 18px; background: var(--color-background-secondary); border-radius: var(--border-radius-lg); }
+  .campo { position: relative; background: #2d6a2e; border-radius: 8px; overflow: hidden; padding: 12px; }
+  .linea { background: rgba(255,255,255,0.25); }
+  .jugador { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 2px; transform: translate(-50%, -50%); }
+  .circulo { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 500; color: #fff; border: 1.5px solid rgba(255,255,255,0.6); }
+  .nombre { font-size: 9px; color: rgba(255,255,255,0.9); text-align: center; max-width: 52px; line-height: 1.2; }
+  .azul { background: #1a3fa5; }
+  .rojo { background: #b22222; }
+</style>
+
+<div class="wrap">
+
+  <!-- ENCABEZADO -->
+  <div style="margin-bottom: 20px;">
+    <span class="pill pill-amber">Plan de partido · Belgrano como DT</span>
+    <p style="margin-top: 10px; font-size: 13px; color: var(--color-text-tertiary);">Razonamiento táctico propio. Plantel confirmado: Cardozo · Morales, Maldonado, L.López, Spörle · Sánchez, Longo · Rigoni, Zelarayán, González Metilli · Passerini. DT: (yo)</p>
+  </div>
+
+  <!-- DIAGNÓSTICO BASE -->
+  <div class="section">
+    <h2>Diagnóstico antes de tocar la pizarra</h2>
+    <p>Lo primero que haría antes de plantear cualquier esquema es ser honesto sobre la realidad del partido: <strong style="color:var(--color-text-primary);">somos el equipo más débil sobre papel</strong>. Argentinos tiene más puntos, juega en casa, su goleador (Molina) viene de hacer el gol decisivo en tiempo extra y la estadística de localía del Bicho en La Paternal en los últimos dos años es aplastante. Negarle eso al plantel sería un error: los jugadores lo saben.</p>
+    <p>Sin embargo, hay tres datos objetivos que cambian el cálculo real:</p>
+    <div class="grid3">
+      <div class="card">
+        <h3>Desgaste rival</h3>
+        <p style="font-size:13px; margin:0;">Argentinos jugó 120 minutos hace 4 días. Nosotros jugamos 90. Hay una diferencia física real en el segundo tiempo y el alargue, si llegamos ahí.</p>
+      </div>
+      <div class="card">
+        <h3>Árbitro Arasa</h3>
+        <p style="font-size:13px; margin:0;">5.05 amarillas/partido promedio. Un árbitro así va a interrumpir el juego constantemente. Eso destruye el ritmo de Argentinos, que necesita fluidez para asfixiar.</p>
+      </div>
+      <div class="card">
+        <h3>Final en Córdoba</h3>
+        <p style="font-size:13px; margin:0;">Si pasamos, la final es en el Kempes. Nuestro estadio, nuestra gente. Eso vale un gol extra de motivación para el plantel.</p>
+      </div>
+    </div>
+    <div class="card-info" style="margin-top: 4px;">
+      <p style="margin:0; font-size:13px; color:var(--color-text-info);"><strong>Conclusión del diagnóstico:</strong> No venimos a especular. Venimos a ganar. Pero la forma de ganar no es imitar a Argentinos sino hacer que el partido sea el tipo de partido que Argentinos no quiere jugar: disputado, físico, con pocas transiciones largas, definido por detalles. Un partido de 90 minutos parejos nos conviene más que cualquier otro escenario.</p>
+    </div>
+  </div>
+
+  <!-- FORMACIÓN Y ESQUEMA -->
+  <div class="section">
+    <h2>Esquema: 4-4-2 asimétrico con trampa táctica</h2>
+    <p>Usaría el 4-4-2 de base que conoce el equipo, pero con una modificación que Argentinos no espera: <strong style="color:var(--color-text-primary);">el 4-4-2 no será simétrico</strong>. Rigoni juega como extremo derecho pero con libertad para meterse al interior. González Metilli juega como extremo izquierdo pero con instrucción de no perder posición defensiva. El resultado real es un 4-4-2 que se convierte en 4-1-4-1 sin pelota y en 4-2-3-1 con pelota.</p>
+
+    <!-- Campo de fútbol visual -->
+    <div class="campo" style="height: 340px; margin: 14px 0;">
+      <!-- Líneas del campo -->
+      <div class="linea" style="position:absolute;left:50%;top:10px;bottom:10px;width:1px;"></div>
+      <div class="linea" style="position:absolute;left:10px;right:10px;top:50%;height:1px;"></div>
+      <div class="linea" style="position:absolute;left:50%;top:50%;width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,0.25);transform:translate(-50%,-50%);"></div>
+      <!-- Arco arriba (rival) -->
+      <div class="linea" style="position:absolute;left:30%;right:30%;top:10px;height:1px;"></div>
+      <!-- Arco abajo (Belgrano) -->
+      <div class="linea" style="position:absolute;left:30%;right:30%;bottom:10px;height:1px;"></div>
+
+      <!-- BELGRANO (abajo, ataca hacia arriba) -->
+      <!-- Arquero -->
+      <div class="jugador" style="left:50%;top:93%;">
+        <div class="circulo azul">1</div>
+        <div class="nombre">Cardozo</div>
+      </div>
+      <!-- Defensa 4 -->
+      <div class="jugador" style="left:15%;top:78%;">
+        <div class="circulo azul">2</div>
+        <div class="nombre">Morales</div>
+      </div>
+      <div class="jugador" style="left:35%;top:78%;">
+        <div class="circulo azul">4</div>
+        <div class="nombre">Maldonado</div>
+      </div>
+      <div class="jugador" style="left:65%;top:78%;">
+        <div class="circulo azul">5</div>
+        <div class="nombre">L.López</div>
+      </div>
+      <div class="jugador" style="left:85%;top:78%;">
+        <div class="circulo azul">3</div>
+        <div class="nombre">Spörle</div>
+      </div>
+      <!-- Medio 4 -->
+      <div class="jugador" style="left:15%;top:58%;">
+        <div class="circulo azul" style="border:2px solid #FFD700;">7</div>
+        <div class="nombre">Rigoni ★</div>
+      </div>
+      <div class="jugador" style="left:37%;top:58%;">
+        <div class="circulo azul">6</div>
+        <div class="nombre">Longo</div>
+      </div>
+      <div class="jugador" style="left:63%;top:58%;">
+        <div class="circulo azul">8</div>
+        <div class="nombre">Sánchez</div>
+      </div>
+      <div class="jugador" style="left:85%;top:58%;">
+        <div class="circulo azul">11</div>
+        <div class="nombre">G.Metilli</div>
+      </div>
+      <!-- Zelarayán flotando entre líneas -->
+      <div class="jugador" style="left:50%;top:42%;">
+        <div class="circulo azul" style="border:2px solid #FFD700;">10</div>
+        <div class="nombre">Zelarayán ★</div>
+      </div>
+      <!-- Passerini arriba -->
+      <div class="jugador" style="left:50%;top:26%;">
+        <div class="circulo azul">9</div>
+        <div class="nombre">Passerini</div>
+      </div>
+
+      <!-- ARGENTINOS (arriba, faint) -->
+      <div class="jugador" style="left:50%;top:7%;">
+        <div class="circulo rojo" style="opacity:0.5;">9</div>
+        <div class="nombre" style="color:rgba(255,255,255,0.5);">Molina</div>
+      </div>
+      <div class="jugador" style="left:25%;top:15%;">
+        <div class="circulo rojo" style="opacity:0.4;">L.M.</div>
+        <div class="nombre" style="color:rgba(255,255,255,0.4);">LópezM</div>
+      </div>
+      <div class="jugador" style="left:75%;top:15%;">
+        <div class="circulo rojo" style="opacity:0.4;">11</div>
+        <div class="nombre" style="color:rgba(255,255,255,0.4);">Jaini</div>
+      </div>
+
+      <!-- Etiqueta -->
+      <div style="position:absolute;bottom:14px;right:14px;font-size:10px;color:rgba(255,255,255,0.5);">★ = rol especial</div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Sin pelota → 4-1-4-1</h3>
+        <p style="font-size:13px; margin:0;">Zelarayán baja a la línea de cuatro del medio. Passerini queda solo arriba como referencia. El bloque bajo tiene 9 jugadores entre los 40 metros. Argentinos no encuentra espacios interiores.</p>
+      </div>
+      <div class="card">
+        <h3>Con pelota → 4-2-3-1</h3>
+        <p style="font-size:13px; margin:0;">Longo y Sánchez quedan de doble pivote. Zelarayán sube como mediapunta. Rigoni y González Metilli abren la cancha. Passerini fija a los centrales. Buscamos el vertical rápido.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTRUCCIONES POR SECTOR -->
+  <div class="section">
+    <h2>Instrucciones individuales por sector</h2>
+    <p style="margin-bottom:14px; font-size:13px;">Lo que le diría a cada línea antes de salir al campo:</p>
+
+    <h3 style="margin-bottom:8px;">Línea defensiva · Morales – Maldonado – L.López – Spörle</h3>
+    <div class="card" style="margin-bottom:12px;">
+      <div class="instr-row">
+        <div class="instr-num">01</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">Línea alta, no baja.</strong> Muchos equipos contra Argentinos en casa ceden terreno y terminan aplastados en su área. Yo no quiero eso. La línea defensiva no baja de los 35 metros propios cuando tenemos la pelota. Le cortamos el espacio a las corridas en profundidad de Molina y obligamos al juego corto de Argentinos, que es donde Longo y Sánchez pueden presionar.</p>
+      </div>
+      <div class="instr-row">
+        <div class="instr-num">02</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">Lisandro López marca a Molina en zona, no en hombre.</strong> No quiero que López persiga a Molina por toda la cancha. Cuando Molina baja a pedir, se lo deja ir y Maldonado o Morales tapan el espacio. Si López sale de posición para seguirlo, deja el espacio que Lescano o López Muñoz van a explotar por dentro. La zona gana sobre el hombre con un delantero como Molina.</p>
+      </div>
+      <div class="instr-row">
+        <div class="instr-num">03</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">Spörle ataca en los primeros 60 minutos.</strong> El lateral izquierdo de Argentinos (Prieto) es su eslabón más débil en la marca. Spörle debe tener libertad para subir y generar superioridad por su banda, pero con instrucción clara de volver apenas perdemos la pelota. Es nuestra primera fuente de profundidad.</p>
+      </div>
+      <div class="instr-row">
+        <div class="instr-num">04</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">Pelota parada defensiva: Maldonado y López siempre quedan en el área.</strong> Si Argentinos tiene 402 centros en el torneo, en este partido va a intentar 25 o 30. Maldonado y López no salen del área ante ningún centro. Morales puede anticipar algo corto, Spörle cubre el segundo palo. Cardozo manda en el área chica.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:8px;">Doble pivote · Longo – Sánchez</h3>
+    <div class="card" style="margin-bottom:12px;">
+      <div class="instr-row">
+        <div class="instr-num">05</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">Misión prioritaria: neutralizar a Fattori.</strong> Fattori es el motor del mediocampo de Argentinos. No tiene que recibir con tiempo. Sánchez (que ya tiene 46 entradas en el torneo) va a ir sobre Fattori cada vez que toque la pelota. Longo cubre el espacio que deja Sánchez. Dos sobre uno cuando sea necesario, pero sin foul estúpido. Con Arasa en el campo, tarjeta amarilla en el primer tiempo puede ser sentencia.</p>
+      </div>
+      <div class="instr-row">
+        <div class="instr-num">06</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">Longo controla a Oroz, no lo sigue.</strong> Oroz es el distribuidor. Si sale de su zona, Longo no lo persigue: ocupa el espacio que deja. El movimiento de Oroz puede ser una trampa para abrir el carril central. Longo se queda en el eje.</p>
+      </div>
+      <div class="instr-row">
+        <div class="instr-num">07</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">La transición empieza en ellos dos.</strong> Cuando recuperamos, la primera opción es siempre Zelarayán. Si no está disponible, el juego largo a Passerini. Nunca el lateral al central. Necesitamos llegar rápido antes de que Argentinos organice la presión.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:8px;">Extremos · Rigoni (der) – González Metilli (izq)</h3>
+    <div class="card" style="margin-bottom:12px;">
+      <div class="instr-row">
+        <div class="instr-num">08</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">Rigoni: doble función, sin excepciones.</strong> Rigoni es el extremo con más libertad ofensiva. Sus 3 asistencias y 19 pases clave lo justifican. Pero es el jugador de Belgrano con más riesgo de expulsión después de Passerini. La instrucción es clara: cuando perdemos la pelota, bajás inmediatamente a cubrir a Lozano. No especulás. Si Lozano llega al fondo con libertad, Argentinos tiene su arma más efectiva: el centro al área donde está Molina. Rigoni puede atacar, pero primero defiende.</p>
+      </div>
+      <div class="instr-row">
+        <div class="instr-num">09</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">González Metilli: extremo izquierdo con ancla defensiva.</strong> Metilli tiene 3 goles en playoffs. Pero el lateral derecho de Argentinos (Lozano) es su mejor jugador ofensivo. Metilli no puede perseguir la pelota. Se queda en su carril y convierte la derecha de Argentinos en zona peligrosa para nosotros. Ofensivamente busca la diagonal interior para recibir de Zelarayán. Dos funciones, igual peso en las dos.</p>
+      </div>
+      <div class="instr-row">
+        <div class="instr-num">10</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">Pelota parada ofensiva: Rigoni ejecuta todos los córners.</strong> El gol de Sánchez ante Unión nació de un córner de Rigoni. Es un arma que ya trabajamos. En cada córner, Passerini va al primer palo como bloqueador y Sánchez ataca el segundo. Si Argentinos aprende y marca a Sánchez, López entra al área en el minuto 85 como recurso no esperado.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:8px;">Zelarayán · el rol que cambia el partido</h3>
+    <div class="card-info" style="margin-bottom:12px;">
+      <div class="instr-row">
+        <div class="instr-num">11</div>
+        <p style="margin:0; font-size:13px; color:var(--color-text-info);"><strong>Zelarayán no tiene posición fija.</strong> Su único trabajo es encontrar los espacios entre las líneas de Argentinos. Con el 4-2-3-1 del Bicho, el espacio entre los dos pivotes (Fattori-Oroz) y la línea de cuatro defensiva es el punto más vulnerable. Zelarayán vive ahí. Cuando recibe de espaldas, el giro es su recurso principal para activar a Passerini o al extremo que llegue. No puede acumular de costado: cada vez que toca la pelota, hay que tener un compañero en vertical disponible.</p>
+      </div>
+      <div class="instr-row">
+        <div class="instr-num">12</div>
+        <p style="margin:0; font-size:13px; color:var(--color-text-info);"><strong>Sin pelota, Zelarayán baja a la línea del medio.</strong> Cuando Argentinos tiene la pelota y nosotros nos replegamos en 4-1-4-1, el Chino ocupa el carril central del mediocampo para tapar la línea de pase a Oroz. No presiona, bloquea. Es un trabajo sin gloria pero sin él el bloque bajo tiene un agujero.</p>
+      </div>
+      <div class="instr-row">
+        <div class="instr-num">13</div>
+        <p style="margin:0; font-size:13px; color:var(--color-text-info);"><strong>Zelarayán ejecuta todos los tiros libres dentro de los 30 metros.</strong> Con Arasa dando 5 faltas por partido, vamos a tener oportunidades. El Chino tiene precisión y potencia. Si hay un tiro libre a 25 metros o menos, él pega. No hay discusión sobre eso.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:8px;">Passerini · el rol del 9</h3>
+    <div class="card" style="margin-bottom:4px;">
+      <div class="instr-row">
+        <div class="instr-num">14</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">Passerini fija a los dos centrales.</strong> Su trabajo principal no es el gol: es hacer que López y Maldonado no puedan salir de su línea. Cada vez que la pelota viene larga, Passerini compite el duelo aéreo. No importa si lo gana o no: lo que importa es que los centrales tienen que mirarlo a él y no a Zelarayán.</p>
+      </div>
+      <div class="instr-row">
+        <div class="instr-num">15</div>
+        <p style="margin:0; font-size:13px;"><strong style="color:var(--color-text-primary);">Passerini controla su carácter.</strong> Fue expulsado en el clásico. Con Arasa en el campo, la primera discusión le puede costar la amarilla. Le digo explícitamente: si hay conflicto, te alejás. El capitán habla. Vos te concentrás en jugar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GESTIÓN POR FASE DEL PARTIDO -->
+  <div class="section">
+    <h2>Gestión minuto a minuto · cuatro fases</h2>
+
+    <!-- FASE 1 -->
+    <div class="card" style="margin-bottom: 10px;">
+      <span class="phase-badge phase-0-30">Minutos 0–30 · "absorber sin recibir"</span>
+      <p style="font-size:13px;"><strong style="color:var(--color-text-primary);">Objetivo de esta fase: llegar al minuto 30 sin recibir gol.</strong> Argentinos va a salir con intensidad máxima. La localía y el ambiente de La Paternal los va a empujar. Lo que no pueden hacer es igualar esa intensidad: si jugamos abiertos los primeros 15 minutos, nos asfixian.</p>
+      <div class="row"><div class="dot dot-blue"></div><p style="margin:0;font-size:13px;">Bloque medio-bajo 4-1-4-1. No presionamos arriba. Dejamos que Argentinos tenga la pelota en los primeros 15 metros y cerramos los carriles interiores.</p></div>
+      <div class="row"><div class="dot dot-blue"></div><p style="margin:0;font-size:13px;">Cuando Argentinos centra, el primer palo es de Morales, el segundo de Spörle. López y Maldonado no salen. Cardozo manda.</p></div>
+      <div class="row"><div class="dot dot-blue"></div><p style="margin:0;font-size:13px;">En cada transición, la pelota va larga a Passerini para ganar terreno y tiempo. No construimos desde atrás en esta fase: demasiado riesgo de robo en zona peligrosa.</p></div>
+      <div class="row"><div class="dot dot-amber"></div><p style="margin:0;font-size:13px;"><strong>Clave disciplinaria:</strong> Digo explícitamente en el vestuario: "Ninguna tarjeta amarilla antes del minuto 30. Si cometés una infracción táctica, el siguiente turno lo cubro yo y te saco. El riesgo no vale."</p></div>
+    </div>
+
+    <!-- FASE 2 -->
+    <div class="card" style="margin-bottom: 10px;">
+      <span class="phase-badge phase-30-60">Minutos 30–60 · "buscar el partido"</span>
+      <p style="font-size:13px;"><strong style="color:var(--color-text-primary);">Si llegamos al 30 sin gol en contra, la dinámica cambia.</strong> Argentinos empieza a sentir la presión del tiempo. El desgaste de los 120 minutos de cuartos empieza a notarse en sus piernas. Aquí es donde subimos la línea defensiva y comenzamos a comprimir el espacio en el mediocampo.</p>
+      <div class="row"><div class="dot dot-green"></div><p style="margin:0;font-size:13px;">Zelarayán empieza a participar más activamente. Ya sabe dónde están los espacios. Sus movimientos al interior empiezan a forzar que Fattori u Oroz tengan que salir de posición.</p></div>
+      <div class="row"><div class="dot dot-green"></div><p style="margin:0;font-size:13px;">Rigoni comienza a atacar más la banda derecha. Lozano ya lleva 30 minutos subiendo: empieza a acumular kilómetros. Si Rigoni lo presiona hacia el final del primer tiempo, Lozano baja la intensidad de sus subidas.</p></div>
+      <div class="row"><div class="dot dot-green"></div><p style="margin:0;font-size:13px;">Buscamos el córner. Si hay chance de pelota parada, el córner de Rigoni con Sánchez al segundo palo es nuestra primera opción de gol. Ya lo hicimos ante Unión. Argentinos lo sabe, pero saberlo no alcanza para frenarlo si la ejecución es buena.</p></div>
+      <div class="row"><div class="dot dot-amber"></div><p style="margin:0;font-size:13px;"><strong>Si recibimos un gol antes del 60:</strong> No cambiamos nada estructuralmente. El partido no terminó. Damos tiempo al equipo para reaccionar. El cambio de esquema viene después del 65, no antes.</p></div>
+    </div>
+
+    <!-- FASE 3 -->
+    <div class="card" style="margin-bottom: 10px;">
+      <span class="phase-badge phase-60-75">Minutos 60–75 · "los cambios que cambian el partido"</span>
+      <p style="font-size:13px;"><strong style="color:var(--color-text-primary);">El partido se decide aquí.</strong> Los cambios no son para tapar huecos: son para cambiar la dinámica. Tengo preparados tres cambios específicos con rol muy definido:</p>
+      <div class="card" style="background: var(--color-background-primary); margin-bottom: 8px;">
+        <div class="sub-row">
+          <span style="font-size:12px; color:var(--color-text-tertiary);">Cambio 1 · min 60–65</span>
+          <span><span class="sub-out">González Metilli ↓</span> → <span class="sub-in">Franco Vázquez ↑</span></span>
+        </div>
+        <p style="font-size:13px; margin:8px 0 0;">El Mudo Vázquez entra al interior como segunda referencia ofensiva. Metilli cumplió su rol defensivo. Ahora necesito más presencia en el área y su pase decisivo para Hernandes ante Unión muestra que puede leer los momentos finales. Vázquez juega como segunda sombra de Zelarayán.</p>
+      </div>
+      <div class="card" style="background: var(--color-background-primary); margin-bottom: 8px;">
+        <div class="sub-row">
+          <span style="font-size:12px; color:var(--color-text-tertiary);">Cambio 2 · min 65–70</span>
+          <span><span class="sub-out">Longo ↓</span> → <span class="sub-in">Hernandes ↑</span></span>
+        </div>
+        <p style="font-size:13px; margin:8px 0 0;">Hernandes entra con más proyección ofensiva que Longo. Longo hizo su trabajo defensivo en los primeros 65 minutos. Ahora necesito que el pivote tenga llegada al área. Hernandes ante Unión hizo el 2-0: conoce ese rol.</p>
+      </div>
+      <div class="card" style="background: var(--color-background-primary);">
+        <div class="sub-row">
+          <span style="font-size:12px; color:var(--color-text-tertiary);">Cambio 3 · min 75–80 (condicional)</span>
+          <span><span class="sub-out">Sánchez ↓</span> → <span class="sub-in">Nicolás Fernández ↑</span></span>
+        </div>
+        <p style="font-size:13px; margin:8px 0 0;">Solo si Sánchez tiene amarilla o si el partido requiere un tercer atacante. Sánchez con 46 entradas en el torneo y Arasa en el campo es un riesgo calculado. Si veo que está al límite, lo saco antes de que vea la segunda.</p>
+      </div>
+    </div>
+
+    <!-- FASE 4 -->
+    <div class="card" style="margin-bottom:4px;">
+      <span class="phase-badge phase-75fin">Minutos 75–90 y más allá · "ganar o empatar, nunca rendirse"</span>
+      <p style="font-size:13px;"><strong style="color:var(--color-text-primary);">Dos escenarios y cómo los manejo:</strong></p>
+      <div class="grid2">
+        <div>
+          <p style="font-size:12px; font-weight:500; color:var(--color-text-primary); margin-bottom:6px;">Si vamos ganando o empatando:</p>
+          <div class="row"><div class="dot dot-blue"></div><p style="margin:0;font-size:13px;">Administramos. Pelota larga, duelos físicos, tiempo en cada jugada parada. Argentinos con el desgaste encima no puede mantener la intensidad de los primeros 30 minutos. Cardozo tiene instrucción de ir al suelo despacio cuando no hay urgencia.</p></div>
+          <div class="row"><div class="dot dot-blue"></div><p style="margin:0;font-size:13px;">Si el partido está empatado al 85, hago el último cambio para un jugador de área que dispute los penales con confianza. Cardozo sabe que en penales el arquero es el héroe: lo preparo mentalmente para eso durante la semana.</p></div>
+        </div>
+        <div>
+          <p style="font-size:12px; font-weight:500; color:var(--color-text-primary); margin-bottom:6px;">Si vamos perdiendo por uno:</p>
+          <div class="row"><div class="dot dot-red"></div><p style="margin:0;font-size:13px;">Passerini sube a jugar de espaldas en el área. El 4-4-2 se convierte en 3-4-3 con Morales subiendo como lateral-extremo zurdo. Vamos al todo o nada: prefiero perder buscando el empate que perder especulando.</p></div>
+          <div class="row"><div class="dot dot-red"></div><p style="margin:0;font-size:13px;">La pelota parada se convierte en el último recurso. Cada foul cerca del área es una oportunidad. Zelarayán al tiro libre, Passerini y Sánchez al área. Si llegamos así, necesitamos un milagro pero los milagros se fuerzan.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GESTIÓN VESTUARIO Y MENTAL -->
+  <div class="section">
+    <h2>Gestión mental y de vestuario · lo que pasa antes de salir</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>La semana previa</h3>
+        <div class="row"><div class="dot dot-blue"></div><p style="margin:0;font-size:13px;">Martes y miércoles: trabajo táctico enfocado exclusivamente en el mediocampo de Argentinos. Cada jugador ve video de Fattori, Oroz y López Muñoz. Saben exactamente qué hace cada uno y cómo reacciona.</p></div>
+        <div class="row"><div class="dot dot-blue"></div><p style="margin:0;font-size:13px;">Jueves: sesión de pelota parada ofensiva. Diez córners practicados, cinco tiros libres. Rigoni y Zelarayán los ejecutan hasta que sean automáticos.</p></div>
+        <div class="row"><div class="dot dot-blue"></div><p style="margin:0;font-size:13px;">Viernes: trabajo de penales. Los cinco ejecutores definidos antes del partido. No improviso en eso. El orden es: Zelarayán, Rigoni, Vázquez, Passerini, Sánchez. Cardozo estudia los perfiles de Cortés y los posibles ejecutores de Argentinos.</p></div>
+      </div>
+      <div class="card">
+        <h3>El vestuario antes de salir</h3>
+        <div class="row"><div class="dot dot-green"></div><p style="margin:0;font-size:13px;">No hablo de la final ni de River. Ese partido no existe todavía. El único partido que existe en el universo son estos 90 minutos.</p></div>
+        <div class="row"><div class="dot dot-green"></div><p style="margin:0;font-size:13px;">Recuerdo que Argentinos jugó 120 minutos hace cuatro días. "En el segundo tiempo ustedes van a ser los frescos. Eso no lo compra nadie."</p></div>
+        <div class="row"><div class="dot dot-green"></div><p style="margin:0;font-size:13px;">A Passerini y Rigoni por separado, antes de la charla grupal: "Si el árbitro cobra algo en tu contra, te alejás y seguís jugando. La mejor respuesta es el próximo gol."</p></div>
+        <div class="row"><div class="dot dot-amber"></div><p style="margin:0;font-size:13px;">La motivación extra que no digo en voz alta pero todos sienten: si ganamos, la final es en Córdoba. Nuestra ciudad. Eso vale más que cualquier discurso.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VEREDICTO -->
+  <div class="section">
+    <div class="verdict">
+      <h2 style="margin-bottom:10px;">La apuesta táctica central · resumen</h2>
+      <p>El partido que Argentinos quiere jugar es: dominio de pelota, centros, Molina en el área, intensidad desde el inicio. El partido que yo le quiero ofrecer es exactamente el opuesto: bloque bajo los primeros 30 minutos, desgastar su intensidad, aparecer con Zelarayán cuando ellos ya no tienen la misma energía, y resolver en pelota parada o penales si hace falta.</p>
+      <p>No es especulación pura: es obligarlos a jugar en condiciones que no eligieron. Argentinos en La Paternal con un rival que no se abre es mucho menos peligroso que Argentinos contra un rival que intenta igualar su ritmo desde el inicio.</p>
+      <p style="margin:0;"><strong style="color:var(--color-text-primary);">La clave de todo el plan es una sola:</strong> llegar al minuto 60 con el marcador en 0-0 o 1-0 a favor. Si lo logramos, el desgaste físico de Argentinos y los cambios de Belgrano inclinan la balanza. Si recibimos el gol antes del 30, el plan cambia y el partido se complica mucho más.</p>
+    </div>
+  </div>
+
+</div>
