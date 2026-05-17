@@ -133,8 +133,42 @@
   .token-bel-special { fill: #f59e0b; stroke: #fbbf24; stroke-width: 1.5; }
   .token-gk { fill: #1a5c2e; stroke: #4ade80; stroke-width: 1.5; }
   .player-label { fill: #fff; font-size: 8px; font-weight: 700; text-anchor: middle; dominant-baseline: central; font-family: system-ui, sans-serif; }
-  .player-name { fill: rgba(255,255,255,0.85); font-size: 7.5px; text-anchor: middle; font-family: system-ui, sans-serif; }
-  .player-name-arg { fill: rgba(255,160,160,0.75); font-size: 7px; text-anchor: middle; font-family: system-ui, sans-serif; }
+  .player-name,
+  .player-name-arg {
+    font-family: system-ui, sans-serif;
+    font-weight: 800;
+    paint-order: stroke fill;
+    stroke: rgba(5, 10, 18, 0.92);
+    stroke-linejoin: round;
+    text-anchor: middle;
+    dominant-baseline: hanging;
+  }
+  .player-name {
+    fill: #ffffff;
+    font-size: 8.4px;
+    stroke-width: 2.4px;
+  }
+  .player-name-arg {
+    fill: #ffc9c9;
+    font-size: 7.8px;
+    stroke-width: 2px;
+  }
+  .player-note {
+    fill: rgba(255,255,255,0.84);
+    font-family: system-ui, sans-serif;
+    font-size: 7.4px;
+    font-weight: 800;
+    paint-order: stroke fill;
+    stroke: rgba(5, 10, 18, 0.9);
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    text-anchor: middle;
+    dominant-baseline: hanging;
+  }
+  .note-red { fill: #ff8f8f; }
+  .note-green { fill: #4ade80; }
+  .note-amber { fill: #fbbf24; }
+  .note-blue { fill: #93c5fd; }
   .section-text { fill: rgba(255,255,255,0.6); font-size: 9px; font-weight: 700; text-anchor: middle; letter-spacing: .05em; font-family: system-ui, sans-serif; }
   .arrow-atk { stroke: #4ade80; stroke-width: 1.6; fill: none; stroke-dasharray: 5 3; marker-end: url(#arr-green); }
   .arrow-pass { stroke: #60a5fa; stroke-width: 1.4; fill: none; marker-end: url(#arr-blue); }
@@ -773,7 +807,7 @@
       <circle cx="65" cy="320" r="13" class="token-bel"/>
       <text class="player-label" x="65" y="320" style="font-size:8px;">11</text>
       <text class="player-name" x="65" y="337">G.Metilli</text>
-      <text class="player-name" x="65" y="348" style="fill:rgba(245,158,11,0.7); font-size:7px;">→ Hernandes</text>
+      <text class="player-note note-amber" x="65" y="348">→ Hernandes</text>
 
       <circle cx="435" cy="320" r="13" class="token-bel-special"/>
       <text class="player-label" x="435" y="320" style="fill:#1a1a00; font-size:8px;">7</text>
@@ -872,14 +906,14 @@
 
       <!-- JUGADORES ARGENTINOS (defensores en el área) -->
       <circle cx="210" cy="50" r="11" fill="#666" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-      <text class="player-name-arg" x="210" y="65" style="fill:rgba(255,255,255,0.5);">defArg</text>
+      <text class="player-name-arg" x="210" y="65">defArg</text>
       <circle cx="290" cy="50" r="11" fill="#666" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-      <text class="player-name-arg" x="290" y="65" style="fill:rgba(255,255,255,0.5);">defArg</text>
+      <text class="player-name-arg" x="290" y="65">defArg</text>
       <circle cx="250" cy="95" r="11" fill="#666" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
       <circle cx="170" cy="90" r="11" fill="#666" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
       <circle cx="330" cy="90" r="11" fill="#666" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
       <circle cx="375" cy="60" r="11" fill="#555" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-      <text class="player-name-arg" x="375" y="75" style="fill:rgba(255,255,255,0.5); font-size:7px;">Álvarez(Arg)</text>
+      <text class="player-name-arg" x="375" y="75">Álvarez(Arg)</text>
       <circle cx="125" cy="60" r="11" fill="#555" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
       <!-- Arquero Cortés -->
       <circle cx="250" cy="35" r="12" fill="#1a5c2e" stroke="#4ade80" stroke-width="1.5"/>
@@ -897,32 +931,32 @@
       <circle cx="370" cy="45" r="14" class="token-bel"/>
       <text class="player-label" x="370" y="45">9</text>
       <text class="player-name" x="370" y="63">Passerini</text>
-      <text class="player-name" x="370" y="73" style="fill:rgba(239,68,68,0.8); font-size:7px;">bloqueador 1°p</text>
+      <text class="player-note note-red" x="370" y="73">bloqueador 1°p</text>
 
       <!-- Sánchez al SEGUNDO PALO como rematador
            Segundo palo desde córner derecho = palo izquierdo = cx~110 -->
       <circle cx="110" cy="45" r="14" class="token-bel-special"/>
       <text class="player-label" x="110" y="45" style="fill:#1a1a00;">8</text>
       <text class="player-name" x="110" y="63">Sánchez</text>
-      <text class="player-name" x="110" y="73" style="fill:rgba(34,197,94,0.9); font-size:7px;">★ REMATADOR 2°p</text>
+      <text class="player-note note-green" x="110" y="73">★ REMATADOR 2°p</text>
 
       <!-- Zelarayán alternativa segundo palo -->
       <circle cx="110" cy="110" r="13" class="token-bel-special"/>
       <text class="player-label" x="110" y="110" style="fill:#1a1a00;">10</text>
       <text class="player-name" x="110" y="127">Zelarayán</text>
-      <text class="player-name" x="110" y="137" style="fill:rgba(245,158,11,0.8); font-size:7px;">alternativa</text>
+      <text class="player-note note-amber" x="110" y="137">alternativa</text>
 
       <!-- López que entra al área en el 85 (recurso secreto) -->
       <circle cx="250" cy="145" r="13" class="token-bel"/>
       <text class="player-label" x="250" y="145">5</text>
       <text class="player-name" x="250" y="163">L.López</text>
-      <text class="player-name" x="250" y="173" style="fill:rgba(96,165,250,0.8); font-size:7px;">entra min.85+</text>
+      <text class="player-note note-blue" x="250" y="173">entra min.85+</text>
 
       <!-- Longo en el borde del área -->
       <circle cx="250" cy="220" r="12" class="token-bel"/>
       <text class="player-label" x="250" y="220" style="font-size:8px;">6</text>
       <text class="player-name" x="250" y="237">Longo</text>
-      <text class="player-name" x="250" y="247" style="fill:rgba(255,255,255,0.5); font-size:7px;">segundo remate</text>
+      <text class="player-name" x="250" y="247">segundo remate</text>
 
       <!-- TRAYECTORIA DEL CENTRO
            Desde esquina derecha (476,22) curva cerrada hacia el 2° palo (izq, cx~110) -->
