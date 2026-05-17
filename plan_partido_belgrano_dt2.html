@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Plan de partido | Belgrano</title>
+<meta name="description" content="Plan táctico visual de Belgrano contra Argentinos."/>
+<meta property="og:title" content="Plan de partido | Belgrano"/>
+<meta property="og:description" content="Diagnóstico, esquema, roles y fases del partido en una presentación visual."/>
+<meta property="og:type" content="website"/>
+<meta name="theme-color" content="#0b1220"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0b1220;
+    --bg2: #111827;
+    --bg3: #1a2236;
+    --border: rgba(255,255,255,0.08);
+    --text: #e2e8f0;
+    --muted: #8899aa;
+    --blue: #3b82f6;
+    --blue-light: #60a5fa;
+    --blue-dim: rgba(59,130,246,0.15);
+    --amber: #f59e0b;
+    --amber-dim: rgba(245,158,11,0.12);
+    --green: #22c55e;
+    --green-dim: rgba(34,197,94,0.12);
+    --red: #ef4444;
+    --red-dim: rgba(239,68,68,0.12);
+    --pirata: #1a3fa5;
+    --bicho-r: #b22222;
+    --grass: #1a5c1e;
+    --grass2: #1d6621;
+    --line: rgba(255,255,255,0.3);
+  }
+  body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; font-size: 15px; line-height: 1.65; }
+  a { color: var(--blue-light); }
+
+  /* NAV */
+  nav { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; gap: 20px; height: 52px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-weight: 700; font-size: 16px; color: var(--text); letter-spacing: -.3px; }
+  .nav-pill { font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 20px; background: var(--blue-dim); color: var(--blue-light); letter-spacing: .04em; text-transform: uppercase; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #0b1220 0%, #0f1e3a 60%, #1a2236 100%); padding: 56px 24px 40px; text-align: center; border-bottom: 1px solid var(--border); }
+  .hero h1 { font-size: clamp(26px,5vw,40px); font-weight: 800; letter-spacing: -.5px; line-height: 1.15; margin-bottom: 12px; }
+  .hero h1 span { color: var(--blue-light); }
+  .hero .sub { color: var(--muted); font-size: 15px; max-width: 560px; margin: 0 auto 20px; }
+  .hero-chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .chip { font-size: 12px; padding: 4px 14px; border-radius: 20px; border: 1px solid var(--border); color: var(--muted); }
+
+  /* LAYOUT */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+  .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--blue-light); margin-bottom: 8px; }
+  .section-heading { font-size: clamp(20px,4vw,26px); font-weight: 700; margin-bottom: 16px; line-height: 1.25; }
+  .section-lead { color: var(--muted); max-width: 680px; margin-bottom: 28px; }
+
+  /* CARDS */
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; }
+  .card-blue { background: var(--blue-dim); border-color: rgba(59,130,246,0.25); }
+  .card-amber { background: var(--amber-dim); border-color: rgba(245,158,11,0.25); }
+  .card-red { background: var(--red-dim); border-color: rgba(239,68,68,0.25); }
+  .card-green { background: var(--green-dim); border-color: rgba(34,197,94,0.25); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media(max-width:600px){ .grid2,.grid3 { grid-template-columns: 1fr; } }
+  .card h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--blue-light); margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* DIAGRAMS label */
+  .diagram-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 8px; }
+  .diagram-wrap { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 10px; }
+  .diagram-caption { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+
+  /* INSTRUCTION ROW */
+  .instr { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .instr:last-child { border-bottom: none; }
+  .instr-num { font-size: 11px; font-weight: 700; color: var(--blue-light); min-width: 24px; padding-top: 2px; font-variant-numeric: tabular-nums; }
+  .instr-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .instr-body strong { color: var(--text); font-weight: 600; }
+
+  /* PHASE TIMELINE */
+  .phase-block { border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; border-left: 3px solid; }
+  .phase-0 { background: rgba(34,197,94,0.08); border-color: var(--green); }
+  .phase-1 { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+  .phase-2 { background: rgba(59,130,246,0.08); border-color: var(--blue); }
+  .phase-3 { background: rgba(239,68,68,0.08); border-color: var(--red); }
+  .phase-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: .04em; }
+  .phase-0 .phase-tag { background: rgba(34,197,94,0.18); color: var(--green); }
+  .phase-1 .phase-tag { background: rgba(245,158,11,0.18); color: var(--amber); }
+  .phase-2 .phase-tag { background: rgba(59,130,246,0.18); color: var(--blue-light); }
+  .phase-3 .phase-tag { background: rgba(239,68,68,0.18); color: var(--red); }
+  .phase-block h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .phase-block p, .phase-block li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .phase-block ul { padding-left: 18px; margin-top: 6px; }
+  .phase-block li { margin-bottom: 4px; }
+
+  /* SUBS TABLE */
+  .sub-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .sub-table th { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; padding: 8px 12px; border-bottom: 1px solid var(--border); text-align: left; }
+  .sub-table td { padding: 12px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sub-table tr:last-child td { border-bottom: none; }
+  .out { color: #ef4444; font-weight: 600; }
+  .inn { color: #22c55e; font-weight: 600; }
+  .sub-note { font-size: 13px; color: var(--muted); }
+
+  /* VERDICT */
+  .verdict { background: var(--bg2); border: 1px solid var(--border); border-top: 3px solid var(--blue-light); border-radius: 12px; padding: 28px 32px; }
+  .verdict h2 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+  .verdict p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 10px; }
+  .verdict p:last-child { margin-bottom: 0; }
+  .verdict strong { color: var(--text); }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 32px 20px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); }
+
+  /* SVG field styles */
+  .field-bg { fill: var(--grass); }
+  .field-stripe { fill: var(--grass2); }
+  .field-line { stroke: var(--line); stroke-width: 1.2; fill: none; }
+  .field-line-thin { stroke: var(--line); stroke-width: 0.7; fill: none; }
+
+  /* Zone overlays */
+  .zone-danger { fill: rgba(239,68,68,0.15); }
+  .zone-mid { fill: rgba(245,158,11,0.10); }
+  .zone-safe { fill: rgba(34,197,94,0.10); }
+
+  /* Player tokens */
+  .token-bel { fill: #1a3fa5; stroke: #4a7fe8; stroke-width: 1.5; }
+  .token-arg { fill: #7a1515; stroke: #cc4444; stroke-width: 1; }
+  .token-bel-special { fill: #f59e0b; stroke: #fbbf24; stroke-width: 1.5; }
+  .token-gk { fill: #1a5c2e; stroke: #4ade80; stroke-width: 1.5; }
+  .player-label { fill: #fff; font-size: 8px; font-weight: 700; text-anchor: middle; dominant-baseline: central; font-family: system-ui, sans-serif; }
+  .player-name { fill: rgba(255,255,255,0.85); font-size: 7.5px; text-anchor: middle; font-family: system-ui, sans-serif; }
+  .player-name-arg { fill: rgba(255,160,160,0.75); font-size: 7px; text-anchor: middle; font-family: system-ui, sans-serif; }
+  .section-text { fill: rgba(255,255,255,0.6); font-size: 9px; font-weight: 700; text-anchor: middle; letter-spacing: .05em; font-family: system-ui, sans-serif; }
+  .arrow-atk { stroke: #4ade80; stroke-width: 1.6; fill: none; stroke-dasharray: 5 3; marker-end: url(#arr-green); }
+  .arrow-pass { stroke: #60a5fa; stroke-width: 1.4; fill: none; marker-end: url(#arr-blue); }
+  .arrow-run { stroke: #fbbf24; stroke-width: 1.4; fill: none; stroke-dasharray: 4 3; marker-end: url(#arr-amber); }
+  .arrow-cover { stroke: #f87171; stroke-width: 1.2; fill: none; stroke-dasharray: 3 3; marker-end: url(#arr-red); }
+  .zone-label { fill: rgba(255,255,255,0.45); font-size: 8px; text-anchor: middle; font-style: italic; font-family: system-ui, sans-serif; }
+  .legend-dot { r: 5; }
+  .legend-text { fill: rgba(255,255,255,0.7); font-size: 9px; font-family: system-ui, sans-serif; dominant-baseline: central; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">⚓ Belgrano</span>
+  <span class="nav-pill">Plan táctico</span>
+</nav>
+
+<div class="hero">
+  <p class="section-title" style="justify-content:center;display:flex;">Torneo Apertura LPF 2026 · Semifinal · La Paternal</p>
+  <h1>Plan de partido contra<br/><span>Argentinos Juniors</span></h1>
+  <p class="sub">Diagnóstico, esquema, roles individuales, fases del partido y gestión mental en una presentación visual lista para compartir.</p>
+  <div class="hero-chips">
+    <span class="chip">4-4-2 Asimétrico</span>
+    <span class="chip">Árb: Nazareno Arasa</span>
+    <span class="chip">Kempes en juego</span>
+    <span class="chip">Formato: análisis visual</span>
+  </div>
+</div>
+
+<!-- ============================================================ SECCIÓN 1: DIAGNÓSTICO -->
+<div class="section">
+<div class="container">
+  <p class="section-title">01 · Diagnóstico</p>
+  <h2 class="section-heading">Antes de tocar la pizarra</h2>
+  <p class="section-lead">Lo primero es ser honesto sobre la realidad: somos el equipo más débil sobre papel. Argentinos tiene más puntos, juega en casa y su goleador Molina viene de hacer el gol decisivo en tiempo extra. Negarle eso al plantel sería un error.</p>
+
+  <div class="grid3">
+    <div class="card card-amber">
+      <h3>⚡ Desgaste rival</h3>
+      <p>Argentinos jugó 120 minutos hace 4 días. Nosotros jugamos 90. Diferencia física real en el segundo tiempo y en el alargue.</p>
+    </div>
+    <div class="card card-blue">
+      <h3>🟨 Árbitro Arasa</h3>
+      <p>5.05 amarillas/partido promedio. Interrumpe el juego constantemente. Eso destruye el ritmo de Argentinos, que necesita fluidez.</p>
+    </div>
+    <div class="card card-green">
+      <h3>🏟️ Final en Córdoba</h3>
+      <p>Si pasamos, la final es en el Kempes. Nuestro estadio, nuestra gente. Vale un gol extra de motivación.</p>
+    </div>
+  </div>
+
+  <div class="card card-blue" style="margin-top:14px;">
+    <h3>Conclusión del diagnóstico</h3>
+    <p>No venimos a especular. Venimos a ganar. Pero la forma de ganar no es imitar a Argentinos: es hacer que el partido sea el tipo de partido que ellos <em>no</em> quieren jugar. Disputado, físico, definido por detalles. Un partido de 90 minutos parejos nos conviene más que cualquier otro escenario.</p>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ SECCIÓN 2: ESQUEMA PRINCIPAL -->
+<div class="section">
+<div class="container">
+  <p class="section-title">02 · Esquema</p>
+  <h2 class="section-heading">4-4-2 asimétrico con trampa táctica</h2>
+  <p class="section-lead">Un 4-4-2 de base que conoce el equipo, pero no simétrico. El resultado real es un esquema que muta entre tres estructuras según la fase del partido.</p>
+
+  <p class="diagram-label">Formación titular — Belgrano (azul) vs silueta Argentinos (rojo)</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 500 680" xmlns="http://www.w3.org/2000/svg" width="100%">
+      <defs>
+        <marker id="arr-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#4ade80"/></marker>
+        <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#60a5fa"/></marker>
+        <marker id="arr-amber" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#fbbf24"/></marker>
+        <marker id="arr-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#f87171"/></marker>
+      </defs>
+
+      <!-- CAMPO STRIPES -->
+      <rect x="20" y="20" width="460" height="640" rx="6" class="field-bg"/>
+      <rect x="20" y="20" width="460" height="80" class="field-stripe"/>
+      <rect x="20" y="180" width="460" height="80" class="field-stripe"/>
+      <rect x="20" y="340" width="460" height="80" class="field-stripe"/>
+      <rect x="20" y="500" width="460" height="80" class="field-stripe"/>
+
+      <!-- BORDES DEL CAMPO -->
+      <rect x="20" y="20" width="460" height="640" rx="6" class="field-line" stroke-width="1.8"/>
+      <!-- Línea del medio -->
+      <line x1="20" y1="340" x2="480" y2="340" class="field-line"/>
+      <!-- Círculo del centro -->
+      <circle cx="250" cy="340" r="50" class="field-line-thin"/>
+      <circle cx="250" cy="340" r="3" fill="white" opacity=".4"/>
+      <!-- Área grande arriba (rival) -->
+      <rect x="100" y="20" width="300" height="80" class="field-line-thin"/>
+      <!-- Área chica arriba -->
+      <rect x="170" y="20" width="160" height="32" class="field-line-thin"/>
+      <!-- Punto penal arriba -->
+      <circle cx="250" cy="68" r="2.5" fill="white" opacity=".4"/>
+      <!-- Área grande abajo (Belgrano) -->
+      <rect x="100" y="580" width="300" height="80" class="field-line-thin"/>
+      <!-- Área chica abajo -->
+      <rect x="170" y="628" width="160" height="32" class="field-line-thin"/>
+      <!-- Punto penal abajo -->
+      <circle cx="250" cy="592" r="2.5" fill="white" opacity=".4"/>
+
+      <!-- ETIQUETAS DE MITADES -->
+      <text x="30" y="336" class="zone-label" text-anchor="start">BELGRANO ataca →</text>
+      <text x="470" y="344" class="zone-label" text-anchor="end" style="fill:rgba(255,140,140,0.45)">← ARGENTINOS</text>
+
+      <!-- ========== BELGRANO (abajo, ataca hacia arriba) ========== -->
+
+      <!-- GK Cardozo -->
+      <circle cx="250" cy="635" r="16" class="token-gk"/>
+      <text class="player-label" x="250" y="635">GK</text>
+      <text class="player-name" x="250" y="652">Cardozo</text>
+
+      <!-- ═══ DEFENSA 4 ═══
+           Izq SVG = banda izq equipo
+           Spörle (lat izq) → cx=80   Maldonado (cen izq) → cx=180
+           L.López (cen der) → cx=320  Morales (lat der) → cx=420  -->
+      <circle cx="80" cy="560" r="15" class="token-bel"/>
+      <text class="player-label" x="80" y="560">3</text>
+      <text class="player-name" x="80" y="578">Spörle ↑</text>
+
+      <circle cx="180" cy="560" r="15" class="token-bel"/>
+      <text class="player-label" x="180" y="560">5</text>
+      <text class="player-name" x="180" y="578">L.López</text>
+
+      <circle cx="320" cy="560" r="15" class="token-bel"/>
+      <text class="player-label" x="320" y="560">4</text>
+      <text class="player-name" x="320" y="578">Maldonado</text>
+
+      <circle cx="420" cy="560" r="15" class="token-bel"/>
+      <text class="player-label" x="420" y="560">2</text>
+      <text class="player-name" x="420" y="578">Morales</text>
+
+      <!-- ═══ MEDIOCAMPO 4 ═══
+           G.Metilli (ext izq) → cx=80   Longo (piv izq) → cx=185
+           Sánchez (piv der) → cx=315    Rigoni (ext der, ★) → cx=420  -->
+      <circle cx="80" cy="440" r="15" class="token-bel"/>
+      <text class="player-label" x="80" y="440">11</text>
+      <text class="player-name" x="80" y="458">G.Metilli</text>
+
+      <circle cx="185" cy="440" r="15" class="token-bel"/>
+      <text class="player-label" x="185" y="440">6</text>
+      <text class="player-name" x="185" y="458">Longo</text>
+
+      <circle cx="315" cy="440" r="15" class="token-bel"/>
+      <text class="player-label" x="315" y="440">8</text>
+      <text class="player-name" x="315" y="458">Sánchez</text>
+
+      <circle cx="420" cy="440" r="15" class="token-bel-special"/>
+      <text class="player-label" x="420" y="440" style="fill:#1a1a00;">7</text>
+      <text class="player-name" x="420" y="458">Rigoni ★</text>
+
+      <!-- Zelarayán - libre entre líneas -->
+      <circle cx="250" cy="380" r="17" class="token-bel-special"/>
+      <text class="player-label" x="250" y="380" style="fill:#1a1a00;">10</text>
+      <text class="player-name" x="250" y="400">Zelarayán ★★</text>
+
+      <!-- Passerini (9) -->
+      <circle cx="250" cy="290" r="15" class="token-bel"/>
+      <text class="player-label" x="250" y="290">9</text>
+      <text class="player-name" x="250" y="308">Passerini</text>
+
+      <!-- ═══ ARGENTINOS (arriba, siluetas) ═══
+           Argentinos juega 4-3-3: Prieto (lat izq) izquierda del SVG
+           LópezM extremo izq → cx=140, Molina 9 centro, Jaini ext der → cx=360
+           Lescano, Fattori, Oroz en medio. Prieto lat izq → cx=80, Lozano lat der → cx=420 -->
+      <circle cx="250" cy="100" r="13" class="token-arg"/>
+      <text class="player-label" x="250" y="100" style="font-size:7px;">9</text>
+      <text class="player-name-arg" x="250" y="116">Molina</text>
+
+      <circle cx="140" cy="155" r="12" class="token-arg"/>
+      <text class="player-label" x="140" y="155" style="font-size:7px;">LM</text>
+      <text class="player-name-arg" x="140" y="170">LópezM</text>
+
+      <circle cx="360" cy="155" r="12" class="token-arg"/>
+      <text class="player-label" x="360" y="155" style="font-size:7px;">11</text>
+      <text class="player-name-arg" x="360" y="170">Jaini</text>
+
+      <circle cx="195" cy="215" r="12" class="token-arg"/>
+      <text class="player-label" x="195" y="215" style="font-size:7px;">F</text>
+      <text class="player-name-arg" x="195" y="230">Fattori</text>
+
+      <circle cx="300" cy="215" r="12" class="token-arg"/>
+      <text class="player-label" x="300" y="215" style="font-size:7px;">O</text>
+      <text class="player-name-arg" x="300" y="230">Oroz</text>
+
+      <!-- Prieto lat izq Argentinos → enfrenta a Rigoni (der Belgrano) → cx=420 lado der SVG -->
+      <circle cx="420" cy="255" r="11" class="token-arg"/>
+      <text class="player-name-arg" x="420" y="268">Prieto</text>
+
+      <!-- Lozano lat der Argentinos → enfrenta a Spörle (izq Belgrano) → cx=80 lado izq SVG -->
+      <circle cx="80" cy="255" r="11" class="token-arg"/>
+      <text class="player-name-arg" x="80" y="268">Lozano</text>
+
+      <!-- LEYENDA -->
+      <rect x="22" y="22" width="162" height="90" rx="4" fill="rgba(0,0,0,0.55)"/>
+      <circle cx="36" cy="38" r="6" class="token-bel"/>
+      <text class="legend-text" x="48" y="38">Belgrano (titulares)</text>
+      <circle cx="36" cy="56" r="6" class="token-bel-special"/>
+      <text class="legend-text" x="48" y="56">★ Rol especial</text>
+      <circle cx="36" cy="74" r="5" class="token-arg"/>
+      <text class="legend-text" x="48" y="74">Argentinos (referencia)</text>
+      <circle cx="36" cy="90" r="6" class="token-gk"/>
+      <text class="legend-text" x="48" y="90">Arquero</text>
+      <text x="36" y="108" class="legend-text" style="fill:rgba(255,255,255,0.4); font-size:8px;">Izq SVG = banda izq equipo</text>
+    </svg>
+  </div>
+  <p class="diagram-caption">El 4-4-2 de Belgrano visto desde arriba: lado izquierdo del diagrama = banda izquierda del equipo. Spörle (lat. izq.) y G.Metilli (ext. izq.) operan por ese lado; Morales (lat. der.) y Rigoni ★ (ext. der.) por el derecho. Zelarayán ★★ flota libre entre líneas. Lozano (Argentinos) enfrenta a Spörle; Prieto enfrenta a Rigoni-Morales.</p>
+</div>
+</div>
+
+<!-- ============================================================ SECCIÓN 3: SIN PELOTA -->
+<div class="section">
+<div class="container">
+  <p class="section-title">03 · Estructura defensiva</p>
+  <h2 class="section-heading">Sin pelota: bloque 4-1-4-1 compacto</h2>
+  <p class="section-lead">Cuando Argentinos tiene la pelota, el equipo se repliega en un 4-1-4-1. Zelarayán baja al carril central del mediocampo. El bloque tiene 9 jugadores entre los 40 metros propios. Argentinos no encuentra espacios interiores.</p>
+
+  <p class="diagram-label">Diagrama defensivo — zonas de cobertura y responsabilidades</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 500 560" xmlns="http://www.w3.org/2000/svg" width="100%">
+      <!-- CAMPO -->
+      <rect x="20" y="20" width="460" height="520" rx="6" class="field-bg"/>
+      <rect x="20" y="20" width="460" height="65" class="field-stripe"/>
+      <rect x="20" y="150" width="460" height="65" class="field-stripe"/>
+      <rect x="20" y="280" width="460" height="65" class="field-stripe"/>
+      <rect x="20" y="410" width="460" height="65" class="field-stripe"/>
+      <rect x="20" y="20" width="460" height="520" rx="6" class="field-line" stroke-width="1.8"/>
+      <line x1="20" y1="280" x2="480" y2="280" class="field-line"/>
+      <circle cx="250" cy="280" r="45" class="field-line-thin"/>
+
+      <!-- ZONAS DE RIESGO/COBERTURA -->
+      <!-- Zona peligrosa (1/4 campo propio) -->
+      <rect x="21" y="395" width="458" height="145" rx="0" class="zone-danger" opacity="0.5"/>
+      <!-- Zona de bloque -->
+      <rect x="21" y="260" width="458" height="135" class="zone-mid" opacity="0.4"/>
+
+      <!-- LÍNEAS DE BLOQUE -->
+      <!-- Línea de 4 del medio -->
+      <line x1="50" y1="350" x2="450" y2="350" stroke="rgba(245,158,11,0.5)" stroke-width="1" stroke-dasharray="6 4"/>
+      <!-- Línea de 4 defensiva -->
+      <line x1="50" y1="440" x2="450" y2="440" stroke="rgba(59,130,246,0.5)" stroke-width="1" stroke-dasharray="6 4"/>
+
+      <!-- LABELS DE ZONA -->
+      <text x="250" y="395" class="zone-label" style="fill:rgba(239,68,68,0.6); font-size:9px; font-weight:700;">ZONA DE RIESGO · proteger a toda costa</text>
+      <text x="250" y="302" class="zone-label">ZONA DE BLOQUE · Zelarayán tapa el eje</text>
+
+      <!-- ARGENTINOS ARRIBA — Prieto lat izq (enfrenta Rigoni) → der SVG, Lozano lat der (enfrenta Spörle) → izq SVG -->
+      <circle cx="250" cy="65" r="12" class="token-arg"/>
+      <text class="player-label" x="250" y="65" style="font-size:7px;">9</text>
+      <text class="player-name-arg" x="250" y="81">Molina</text>
+      <circle cx="140" cy="115" r="11" class="token-arg"/>
+      <text class="player-name-arg" x="140" y="129">LópezM</text>
+      <circle cx="360" cy="115" r="11" class="token-arg"/>
+      <text class="player-name-arg" x="360" y="129">Jaini</text>
+      <circle cx="195" cy="175" r="11" class="token-arg"/>
+      <text class="player-name-arg" x="195" y="189">Fattori</text>
+      <circle cx="305" cy="175" r="11" class="token-arg"/>
+      <text class="player-name-arg" x="305" y="189">Oroz</text>
+      <!-- Lozano lat der Arg → enfrenta Spörle → lado izq SVG -->
+      <circle cx="72" cy="215" r="10" class="token-arg"/>
+      <text class="player-name-arg" x="72" y="228">Lozano</text>
+      <!-- Prieto lat izq Arg → enfrenta Rigoni/Morales → lado der SVG -->
+      <circle cx="428" cy="215" r="10" class="token-arg"/>
+      <text class="player-name-arg" x="428" y="228">Prieto</text>
+
+      <!-- BELGRANO DEFENSIVO 4-1-4-1 -->
+
+      <!-- Passerini solo arriba -->
+      <circle cx="250" cy="245" r="13" class="token-bel"/>
+      <text class="player-label" x="250" y="245" style="font-size:8px;">9</text>
+      <text class="player-name" x="250" y="262">Passerini</text>
+
+      <!-- Zelarayán bajado al eje (el "1" del 4-1-4-1) -->
+      <circle cx="250" cy="315" r="15" class="token-bel-special"/>
+      <text class="player-label" x="250" y="315" style="fill:#1a1a00; font-size:8px;">10</text>
+      <text class="player-name" x="250" y="332">Zelarayán</text>
+
+      <!-- Línea de 4 del medio:
+           G.Metilli (ext izq) → cx=72   Longo (piv izq) → cx=185
+           Sánchez (piv der) → cx=315    Rigoni ★ (ext der) → cx=428 -->
+      <circle cx="72" cy="355" r="13" class="token-bel"/>
+      <text class="player-label" x="72" y="355" style="font-size:7px;">11</text>
+      <text class="player-name" x="72" y="372">G.Metilli</text>
+
+      <circle cx="185" cy="355" r="13" class="token-bel"/>
+      <text class="player-label" x="185" y="355" style="font-size:8px;">6</text>
+      <text class="player-name" x="185" y="372">Longo</text>
+
+      <circle cx="315" cy="355" r="13" class="token-bel"/>
+      <text class="player-label" x="315" y="355" style="font-size:8px;">8</text>
+      <text class="player-name" x="315" y="372">Sánchez</text>
+
+      <circle cx="428" cy="355" r="13" class="token-bel-special"/>
+      <text class="player-label" x="428" y="355" style="fill:#1a1a00; font-size:7px;">7</text>
+      <text class="player-name" x="428" y="372">Rigoni ★</text>
+
+      <!-- Línea de 4 defensiva:
+           Spörle (lat izq) → cx=72   L.López (cen izq) → cx=185
+           Maldonado (cen der) → cx=315  Morales (lat der) → cx=428 -->
+      <circle cx="72" cy="445" r="13" class="token-bel"/>
+      <text class="player-label" x="72" y="445" style="font-size:8px;">3</text>
+      <text class="player-name" x="72" y="462">Spörle</text>
+
+      <circle cx="185" cy="445" r="13" class="token-bel"/>
+      <text class="player-label" x="185" y="445" style="font-size:8px;">5</text>
+      <text class="player-name" x="185" y="462">L.López</text>
+
+      <circle cx="315" cy="445" r="13" class="token-bel"/>
+      <text class="player-label" x="315" y="445" style="font-size:8px;">4</text>
+      <text class="player-name" x="315" y="462">Maldonado</text>
+
+      <circle cx="428" cy="445" r="13" class="token-bel"/>
+      <text class="player-label" x="428" y="445" style="font-size:8px;">2</text>
+      <text class="player-name" x="428" y="462">Morales</text>
+
+      <!-- Arquero -->
+      <circle cx="250" cy="515" r="13" class="token-gk"/>
+      <text class="player-label" x="250" y="515" style="font-size:7px;">GK</text>
+      <text class="player-name" x="250" y="530">Cardozo</text>
+
+      <!-- FLECHAS DE COBERTURA corregidas -->
+      <!-- G.Metilli cubre su banda izq (enfrenta a Lozano) -->
+      <path d="M72,342 Q72,285 72,228" class="arrow-cover" stroke-dasharray="4 3"/>
+      <!-- Rigoni cubre Prieto (banda der) -->
+      <path d="M428,342 Q428,285 428,228" class="arrow-cover" stroke-dasharray="4 3"/>
+      <!-- Zelarayán tapa eje Fattori -->
+      <path d="M237,302 Q215,245 200,188" class="arrow-cover" stroke-dasharray="4 3"/>
+      <!-- Zelarayán también tapa Oroz -->
+      <path d="M263,302 Q285,245 300,188" class="arrow-cover" stroke-dasharray="4 3"/>
+      <!-- Sánchez sobre Fattori / Longo sobre Oroz -->
+      <path d="M315,342 Q308,265 305,188" class="arrow-cover" stroke-dasharray="4 3"/>
+
+      <!-- LEYENDA -->
+      <rect x="22" y="22" width="130" height="60" rx="4" fill="rgba(0,0,0,0.5)"/>
+      <line x1="30" y1="40" x2="50" y2="40" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text class="legend-text" x="56" y="40">Responsabilidad cobertura</text>
+      <rect x="30" y="52" width="12" height="6" fill="rgba(239,68,68,0.3)" rx="1"/>
+      <text class="legend-text" x="47" y="56">Zona de riesgo</text>
+      <rect x="30" y="66" width="12" height="6" fill="rgba(245,158,11,0.2)" rx="1"/>
+      <text class="legend-text" x="47" y="70">Bloque compacto</text>
+    </svg>
+  </div>
+  <p class="diagram-caption">En estructura defensiva el equipo se apila en dos líneas de cuatro con Zelarayán como pivote interior que bloquea el eje (la línea de pase a Fattori y Oroz). Las flechas rojas muestran la responsabilidad de cobertura de cada jugador. Passerini queda solo como referencia ofensiva.</p>
+
+  <div class="grid2">
+    <div class="card card-red">
+      <h3>Instrucción clave: línea alta</h3>
+      <p>No ceder terreno. La línea de cuatro no baja de los 35 metros propios cuando tenemos la pelota. Le cortamos el espacio a las corridas de Molina.</p>
+    </div>
+    <div class="card">
+      <h3>Cobertura de centros</h3>
+      <p>402 centros de Argentinos en el torneo. Maldonado y López nunca salen del área. Morales anticipa el corto, Spörle cubre el segundo palo. Cardozo manda en el área chica.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ SECCIÓN 4: CON PELOTA -->
+<div class="section">
+<div class="container">
+  <p class="section-title">04 · Estructura ofensiva</p>
+  <h2 class="section-heading">Con pelota: 4-2-3-1 y salida vertical</h2>
+  <p class="section-lead">Al recuperar, el equipo transiciona a 4-2-3-1. Longo y Sánchez quedan de doble pivote. Zelarayán sube como mediapunta. Los extremos abren la cancha. La primera opción es siempre el vertical a Zelarayán o el largo a Passerini — nunca el lateral al central.</p>
+
+  <p class="diagram-label">Diagrama ofensivo — vectores de ataque y conexiones clave</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" width="100%">
+      <!-- CAMPO -->
+      <rect x="20" y="20" width="460" height="560" rx="6" class="field-bg"/>
+      <rect x="20" y="20" width="460" height="70" class="field-stripe"/>
+      <rect x="20" y="160" width="460" height="70" class="field-stripe"/>
+      <rect x="20" y="300" width="460" height="70" class="field-stripe"/>
+      <rect x="20" y="440" width="460" height="70" class="field-stripe"/>
+      <rect x="20" y="20" width="460" height="560" rx="6" class="field-line" stroke-width="1.8"/>
+      <line x1="20" y1="300" x2="480" y2="300" class="field-line"/>
+      <circle cx="250" cy="300" r="45" class="field-line-thin"/>
+      <rect x="100" y="20" width="300" height="80" class="field-line-thin"/>
+      <rect x="175" y="20" width="150" height="30" class="field-line-thin"/>
+      <circle cx="250" cy="66" r="2.5" fill="white" opacity=".4"/>
+      <rect x="100" y="500" width="300" height="80" class="field-line-thin"/>
+      <rect x="175" y="548" width="150" height="32" class="field-line-thin"/>
+      <circle cx="250" cy="510" r="2.5" fill="white" opacity=".4"/>
+
+      <!-- ZONA DE ATAQUE HIGHLIGHT -->
+      <rect x="80" y="20" width="340" height="200" fill="rgba(34,197,94,0.06)" rx="4"/>
+      <text x="250" y="220" class="zone-label" style="fill:rgba(34,197,94,0.5);">ZONA DE ATAQUE · objetivo</text>
+
+      <!-- ESPACIO CLAVE ENTRE LÍNEAS -->
+      <rect x="120" y="185" width="260" height="80" fill="rgba(245,158,11,0.12)" rx="4"/>
+      <text x="250" y="232" class="zone-label" style="fill:rgba(245,158,11,0.7); font-size:9px;">⚡ espacio entre líneas · territorio de Zelarayán</text>
+
+      <!-- BELGRANO CON PELOTA 4-2-3-1 -->
+      <!-- Cardozo -->
+      <circle cx="250" cy="552" r="13" class="token-gk"/>
+      <text class="player-label" x="250" y="552" style="font-size:7px;">GK</text>
+      <text class="player-name" x="250" y="568">Cardozo</text>
+
+      <!-- Defensa 4:
+           Spörle (lat izq) → cx=72   L.López (cen izq) → cx=180
+           Maldonado (cen der) → cx=320  Morales (lat der) → cx=428 -->
+      <circle cx="72" cy="480" r="13" class="token-bel"/>
+      <text class="player-label" x="72" y="480" style="font-size:8px;">3</text>
+      <text class="player-name" x="72" y="497">Spörle ↑</text>
+      <circle cx="180" cy="480" r="13" class="token-bel"/>
+      <text class="player-label" x="180" y="480" style="font-size:8px;">5</text>
+      <text class="player-name" x="180" y="497">L.López</text>
+      <circle cx="320" cy="480" r="13" class="token-bel"/>
+      <text class="player-label" x="320" y="480" style="font-size:8px;">4</text>
+      <text class="player-name" x="320" y="497">Maldonado</text>
+      <!-- Morales subido como lat der ofensivo -->
+      <circle cx="428" cy="440" r="13" class="token-bel"/>
+      <text class="player-label" x="428" y="440" style="font-size:8px;">2</text>
+      <text class="player-name" x="428" y="457">Morales ↑</text>
+
+      <!-- Doble pivote:
+           Longo (piv izq) → cx=190   Sánchez (piv der) → cx=310 -->
+      <circle cx="190" cy="385" r="13" class="token-bel"/>
+      <text class="player-label" x="190" y="385" style="font-size:8px;">6</text>
+      <text class="player-name" x="190" y="402">Longo</text>
+      <circle cx="310" cy="385" r="13" class="token-bel"/>
+      <text class="player-label" x="310" y="385" style="font-size:8px;">8</text>
+      <text class="player-name" x="310" y="402">Sánchez</text>
+
+      <!-- Extremos:
+           G.Metilli (ext izq) → cx=65   Rigoni (ext der) ★ → cx=435
+           Hernandes cuando entra reemplaza a G.Metilli por izquierda -->
+      <circle cx="65" cy="320" r="13" class="token-bel"/>
+      <text class="player-label" x="65" y="320" style="font-size:8px;">11</text>
+      <text class="player-name" x="65" y="337">G.Metilli</text>
+      <text class="player-name" x="65" y="348" style="fill:rgba(245,158,11,0.7); font-size:7px;">→ Hernandes</text>
+
+      <circle cx="435" cy="320" r="13" class="token-bel-special"/>
+      <text class="player-label" x="435" y="320" style="fill:#1a1a00; font-size:8px;">7</text>
+      <text class="player-name" x="435" y="337">Rigoni ★</text>
+
+      <!-- Zelarayán como mediapunta -->
+      <circle cx="250" cy="235" r="16" class="token-bel-special"/>
+      <text class="player-label" x="250" y="235" style="fill:#1a1a00;">10</text>
+      <text class="player-name" x="250" y="254">Zelarayán</text>
+
+      <!-- Passerini arriba -->
+      <circle cx="250" cy="130" r="14" class="token-bel"/>
+      <text class="player-label" x="250" y="130">9</text>
+      <text class="player-name" x="250" y="148">Passerini</text>
+
+      <!-- ARGENTINOS (referencia): Prieto lat izq → der SVG, Lozano lat der → izq SVG -->
+      <circle cx="310" cy="340" r="11" class="token-arg" opacity=".7"/>
+      <text class="player-name-arg" x="310" y="354">Fattori</text>
+      <circle cx="190" cy="340" r="11" class="token-arg" opacity=".7"/>
+      <text class="player-name-arg" x="190" y="354">Oroz</text>
+      <!-- Prieto (lat izq Arg) → der SVG → enfrenta a Rigoni/Morales -->
+      <circle cx="428" cy="420" r="10" class="token-arg" opacity=".5"/>
+      <text class="player-name-arg" x="428" y="434">Prieto</text>
+      <!-- Lozano (lat der Arg) → izq SVG → enfrenta a Spörle/G.Metilli -->
+      <circle cx="72" cy="420" r="10" class="token-arg" opacity=".5"/>
+      <text class="player-name-arg" x="72" y="434">Lozano</text>
+
+      <!-- VECTORES DE ATAQUE -->
+      <!-- Pelota en doble pivote Longo -->
+      <circle cx="190" cy="385" r="5" fill="white" opacity=".8"/>
+      <!-- Longo → Zelarayán (primera opción) -->
+      <path d="M 200,372 Q 225,305 243,252" class="arrow-pass"/>
+      <!-- Sánchez → Zelarayán -->
+      <path d="M 300,372 Q 275,305 257,252" class="arrow-pass"/>
+      <!-- Largo a Passerini -->
+      <path d="M 197,372 Q 220,260 244,147" class="arrow-run" stroke-dasharray="5 4"/>
+      <!-- Zelarayán → G.Metilli diagonal izquierda -->
+      <path d="M 237,228 Q 155,255 80,323" class="arrow-atk"/>
+      <!-- Zelarayán → Rigoni por derecha -->
+      <path d="M 263,228 Q 350,265 428,323" class="arrow-atk"/>
+      <!-- Zelarayán → Passerini vertical -->
+      <path d="M 250,220 L 250,147" class="arrow-atk"/>
+      <!-- Spörle proyección ofensiva izquierda -->
+      <path d="M 72,465 Q 65,390 62,280" class="arrow-run" stroke-dasharray="5 3"/>
+      <!-- Morales proyección ofensiva derecha -->
+      <path d="M 428,425 Q 435,360 435,250" class="arrow-run" stroke-dasharray="5 3"/>
+
+      <!-- LEYENDA -->
+      <rect x="22" y="22" width="145" height="80" rx="4" fill="rgba(0,0,0,0.5)"/>
+      <line x1="30" y1="40" x2="50" y2="40" class="arrow-pass" style="stroke-dasharray:none;"/>
+      <text class="legend-text" x="56" y="40">Pase directo</text>
+      <line x1="30" y1="56" x2="50" y2="56" class="arrow-atk" style="stroke:#4ade80;"/>
+      <text class="legend-text" x="56" y="56">Vector de ataque</text>
+      <line x1="30" y1="72" x2="50" y2="72" class="arrow-run"/>
+      <text class="legend-text" x="56" y="72">Proyección/carrera</text>
+      <circle cx="36" cy="88" r="4" fill="white" opacity=".8"/>
+      <text class="legend-text" x="48" y="88">Posesión de pelota</text>
+    </svg>
+  </div>
+  <p class="diagram-caption">En estructura ofensiva: Spörle sube por la izquierda y Morales por la derecha como carrileros. G.Metilli opera por la banda izquierda (cuando sale, Hernandes entra por esa misma banda). Rigoni abre la banda derecha. Zelarayán recibe del doble pivote y activa en las tres direcciones. Lozano (Arg) enfrenta a Spörle/G.Metilli por izquierda; Prieto enfrenta a Morales/Rigoni por derecha.</p>
+</div>
+</div>
+
+<!-- ============================================================ SECCIÓN 5: JUGADA DE CÓRNER -->
+<div class="section">
+<div class="container">
+  <p class="section-title">05 · Jugada ensayada</p>
+  <h2 class="section-heading">El córner: Rigoni → Sánchez (ya probado vs Unión)</h2>
+  <p class="section-lead">El gol de Sánchez ante Unión en cuartos de final no fue casualidad — fue una jugada trabajada. La repetimos. Argentinos lo sabe, pero saberlo no alcanza para frenarlo si la ejecución es precisa. Con Arasa dando 5+ faltas por partido, vamos a tener entre 6 y 10 córners.</p>
+
+  <p class="diagram-label">Diagrama de córner — roles y movimientos</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" width="100%">
+      <!-- CAMPO (zona del área) -->
+      <rect x="20" y="20" width="460" height="340" rx="6" class="field-bg"/>
+      <rect x="20" y="20" width="460" height="60" class="field-stripe"/>
+      <rect x="20" y="140" width="460" height="60" class="field-stripe"/>
+      <rect x="20" y="260" width="460" height="60" class="field-stripe"/>
+      <rect x="20" y="20" width="460" height="340" rx="6" class="field-line" stroke-width="1.8"/>
+
+      <!-- Área grande -->
+      <rect x="80" y="20" width="340" height="160" class="field-line"/>
+      <!-- Área chica -->
+      <rect x="160" y="20" width="180" height="60" class="field-line"/>
+      <!-- Arco -->
+      <rect x="190" y="20" width="120" height="6" fill="rgba(255,255,255,0.3)" rx="2"/>
+      <!-- Punto de penal -->
+      <circle cx="250" cy="130" r="3" fill="white" opacity=".5"/>
+
+      <!-- Zona del primer palo -->
+      <rect x="80" y="20" width="90" height="160" fill="rgba(239,68,68,0.08)" rx="2"/>
+      <!-- Zona del segundo palo -->
+      <rect x="330" y="20" width="90" height="160" fill="rgba(59,130,246,0.12)" rx="2"/>
+      <!-- Zona del punto de penal -->
+      <rect x="185" y="80" width="130" height="100" fill="rgba(245,158,11,0.08)" rx="2"/>
+
+      <!-- JUGADORES ARGENTINOS (defensores en el área) -->
+      <circle cx="210" cy="50" r="11" fill="#666" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <text class="player-name-arg" x="210" y="65" style="fill:rgba(255,255,255,0.5);">defArg</text>
+      <circle cx="290" cy="50" r="11" fill="#666" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <text class="player-name-arg" x="290" y="65" style="fill:rgba(255,255,255,0.5);">defArg</text>
+      <circle cx="250" cy="95" r="11" fill="#666" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <circle cx="170" cy="90" r="11" fill="#666" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <circle cx="330" cy="90" r="11" fill="#666" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <circle cx="375" cy="60" r="11" fill="#555" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <text class="player-name-arg" x="375" y="75" style="fill:rgba(255,255,255,0.5); font-size:7px;">Álvarez(Arg)</text>
+      <circle cx="125" cy="60" r="11" fill="#555" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <!-- Arquero Cortés -->
+      <circle cx="250" cy="35" r="12" fill="#1a5c2e" stroke="#4ade80" stroke-width="1.5"/>
+      <text class="player-label" x="250" y="35" style="font-size:7px;">GK</text>
+      <text class="player-name" x="250" y="50">Cortés</text>
+
+      <!-- BELGRANO EN EL CÓRNER
+           Rigoni juega por DERECHA → ejecuta desde esquina DERECHA del campo (cx~476, cy=22) -->
+      <circle cx="476" cy="22" r="13" class="token-bel-special"/>
+      <text class="player-label" x="476" y="22" style="fill:#1a1a00; font-size:7px;">7</text>
+      <text class="player-name" x="436" y="14">Rigoni · ejecuta ▶</text>
+
+      <!-- Passerini al PRIMER PALO (der del arco desde la óptica de Rigoni) como bloqueador
+           Primer palo desde córner derecho = palo derecho del arco = cx~370 -->
+      <circle cx="370" cy="45" r="14" class="token-bel"/>
+      <text class="player-label" x="370" y="45">9</text>
+      <text class="player-name" x="370" y="63">Passerini</text>
+      <text class="player-name" x="370" y="73" style="fill:rgba(239,68,68,0.8); font-size:7px;">bloqueador 1°p</text>
+
+      <!-- Sánchez al SEGUNDO PALO como rematador
+           Segundo palo desde córner derecho = palo izquierdo = cx~110 -->
+      <circle cx="110" cy="45" r="14" class="token-bel-special"/>
+      <text class="player-label" x="110" y="45" style="fill:#1a1a00;">8</text>
+      <text class="player-name" x="110" y="63">Sánchez</text>
+      <text class="player-name" x="110" y="73" style="fill:rgba(34,197,94,0.9); font-size:7px;">★ REMATADOR 2°p</text>
+
+      <!-- Zelarayán alternativa segundo palo -->
+      <circle cx="110" cy="110" r="13" class="token-bel-special"/>
+      <text class="player-label" x="110" y="110" style="fill:#1a1a00;">10</text>
+      <text class="player-name" x="110" y="127">Zelarayán</text>
+      <text class="player-name" x="110" y="137" style="fill:rgba(245,158,11,0.8); font-size:7px;">alternativa</text>
+
+      <!-- López que entra al área en el 85 (recurso secreto) -->
+      <circle cx="250" cy="145" r="13" class="token-bel"/>
+      <text class="player-label" x="250" y="145">5</text>
+      <text class="player-name" x="250" y="163">L.López</text>
+      <text class="player-name" x="250" y="173" style="fill:rgba(96,165,250,0.8); font-size:7px;">entra min.85+</text>
+
+      <!-- Longo en el borde del área -->
+      <circle cx="250" cy="220" r="12" class="token-bel"/>
+      <text class="player-label" x="250" y="220" style="font-size:8px;">6</text>
+      <text class="player-name" x="250" y="237">Longo</text>
+      <text class="player-name" x="250" y="247" style="fill:rgba(255,255,255,0.5); font-size:7px;">segundo remate</text>
+
+      <!-- TRAYECTORIA DEL CENTRO
+           Desde esquina derecha (476,22) curva cerrada hacia el 2° palo (izq, cx~110) -->
+      <path d="M 463,25 Q 350,-20 120,42" stroke="#fbbf24" stroke-width="2.5" fill="none" marker-end="url(#arr-amber)"/>
+      <text x="290" y="12" style="fill:rgba(245,158,11,0.85); font-size:9px; font-weight:700; font-family:system-ui; text-anchor:middle;">centro cerrado al 2° palo</text>
+
+      <!-- Sánchez entra al 2° palo desde la izquierda -->
+      <path d="M 110,68 Q 110,58 110,56" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arr-green)"/>
+
+      <!-- Passerini movimiento de bloqueo hacia el centro del área -->
+      <path d="M 356,50 Q 295,60 250,75" stroke="#f87171" stroke-width="1.5" fill="none" stroke-dasharray="4 3" marker-end="url(#arr-red)"/>
+
+      <!-- LABELS DE ZONA -->
+      <text x="125" y="185" class="zone-label" style="fill:rgba(59,130,246,0.6);">SEGUNDO PALO</text>
+      <text x="375" y="185" class="zone-label" style="fill:rgba(239,68,68,0.6);">PRIMER PALO</text>
+      <text x="250" y="185" class="zone-label" style="fill:rgba(245,158,11,0.6);">ZONA DEL PUNTO</text>
+      <text x="460" y="185" class="zone-label" style="fill:rgba(255,255,255,0.3); font-size:7px;">Córner ▶</text>
+
+      <!-- MOVIMIENTO DE ENTRADA DE LONGO al área desde el borde -->
+      <path d="M 250,209 Q 215,185 175,130" stroke="#60a5fa" stroke-width="1.3" fill="none" stroke-dasharray="5 3" marker-end="url(#arr-blue)"/>
+
+      <!-- LEYENDA -->
+      <rect x="22" y="290" width="200" height="72" rx="4" fill="rgba(0,0,0,0.5)"/>
+      <line x1="30" y1="308" x2="60" y2="308" stroke="#fbbf24" stroke-width="2"/>
+      <text class="legend-text" x="66" y="308">Trayectoria del córner</text>
+      <line x1="30" y1="324" x2="60" y2="324" stroke="#22c55e" stroke-width="1.5"/>
+      <text class="legend-text" x="66" y="324">Movimiento de entrada</text>
+      <line x1="30" y1="340" x2="60" y2="340" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text class="legend-text" x="66" y="340">Bloqueo</text>
+      <line x1="30" y1="356" x2="60" y2="356" stroke="#60a5fa" stroke-width="1.3" stroke-dasharray="5 3"/>
+      <text class="legend-text" x="66" y="356">Llegada desde el borde</text>
+    </svg>
+  </div>
+  <p class="diagram-caption">La jugada es la misma que funcionó ante Unión: Rigoni ejecuta un centro cerrado al segundo palo, Passerini bloquea en el primer palo para desordenar la defensa zonal, y Sánchez entra desde atrás al segundo palo para cabecear. Si Argentinos aprende y cierra a Sánchez, Zelarayán es la alternativa en el mismo espacio. En el minuto 85+, Lisandro López sube al área como recurso inesperado.</p>
+
+  <div class="card card-amber">
+    <h3>Por qué esta jugada puede funcionar de nuevo</h3>
+    <p>Argentinos tiene defensa zonal en los córners. Eso significa que cada defensor cubre un espacio, no a un jugador. El movimiento de Passerini como bloqueador en el primer palo obliga a uno o dos defensores zonales a desplazarse, abriendo el carril del segundo palo para Sánchez. La ejecución de Rigoni — centro cerrado, no abierto — hace que sea más difícil de despejar por el arquero.</p>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ SECCIÓN 6: FASES DEL PARTIDO -->
+<div class="section">
+<div class="container">
+  <p class="section-title">06 · Gestión del partido</p>
+  <h2 class="section-heading">Cuatro fases, cuatro objetivos distintos</h2>
+  <p class="section-lead">El partido no es un bloque de 90 minutos. Es una secuencia de cuatro fases con objetivos y comportamientos diferentes. Cada jugador sabe en qué fase está y qué se espera de él.</p>
+
+  <div class="phase-block phase-0">
+    <span class="phase-tag">0 – 30 min · absorber sin recibir</span>
+    <h3>Objetivo: llegar al 30' con el marcador 0-0</h3>
+    <p>Argentinos sale con intensidad máxima empujado por La Paternal. Si igualamos esa intensidad desde el arranque, nos asfixian. Bloque 4-1-4-1, no presionamos arriba, cerramos los carriles interiores.</p>
+    <ul>
+      <li>Pelota larga a Passerini en cada transición — ganamos terreno y tiempo</li>
+      <li>No construimos desde atrás en esta fase — riesgo de robo en zona peligrosa</li>
+      <li>Ninguna tarjeta amarilla antes del minuto 30 — instrucción explícita y no negociable</li>
+    </ul>
+  </div>
+
+  <div class="phase-block phase-1">
+    <span class="phase-tag">30 – 60 min · buscar el partido</span>
+    <h3>Objetivo: crear la primera ocasión clara</h3>
+    <p>Al llegar al 30' sin gol en contra, la presión cambia de lado. Argentinos empieza a acusar el desgaste de los 120 minutos de cuartos. Subimos la línea defensiva y comenzamos a comprimir el espacio en el mediocampo.</p>
+    <ul>
+      <li>Zelarayán participa más activamente — ya sabe dónde están los espacios</li>
+      <li>Rigoni presiona a Lozano en las subidas — lo desgasta para el segundo tiempo</li>
+      <li>Buscamos el córner — nuestra primera opción de gol es la pelota parada</li>
+      <li>Si recibimos un gol: no cambiamos nada antes del 65 — el partido no terminó</li>
+    </ul>
+  </div>
+
+  <div class="phase-block phase-2">
+    <span class="phase-tag">60 – 75 min · los cambios que cambian el partido</span>
+    <h3>Objetivo: cambiar la dinámica con los ingresos</h3>
+    <div style="overflow-x:auto;">
+      <table class="sub-table" style="background:var(--bg3); border-radius:8px; overflow:hidden;">
+        <thead><tr><th>Minuto</th><th>Sale</th><th>Entra</th><th>Rol del ingreso</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>60–65</td>
+            <td class="out">↓ González Metilli</td>
+            <td class="inn">↑ Franco Vázquez</td>
+            <td class="sub-note">Segunda referencia ofensiva, segunda sombra de Zelarayán. Su pase decisivo para Hernandes ante Unión mostró que lee los momentos finales.</td>
+          </tr>
+          <tr>
+            <td>65–70</td>
+            <td class="out">↓ Longo</td>
+            <td class="inn">↑ Hernandes</td>
+            <td class="sub-note">Pivote con llegada al área. Hizo el 2-0 ante Unión. Conoce ese rol de llegada tarde desde atrás.</td>
+          </tr>
+          <tr>
+            <td>75–80 (cond.)</td>
+            <td class="out">↓ Sánchez</td>
+            <td class="inn">↑ N. Fernández</td>
+            <td class="sub-note">Solo si Sánchez tiene amarilla o el partido requiere un tercer atacante. Con Arasa en el campo, 46 entradas en el torneo es una bomba de tiempo.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="phase-block phase-3">
+    <span class="phase-tag">75 min – final · ganar o empatar, nunca rendirse</span>
+    <h3>Dos escenarios, una sola mentalidad</h3>
+    <div class="grid2" style="margin-top:10px;">
+      <div>
+        <p style="font-size:13px; font-weight:600; color:var(--green); margin-bottom:6px;">Si vamos ganando o empatando:</p>
+        <p>Administramos. Pelota larga, duelos físicos, tiempo en cada jugada parada. Cardozo va al suelo despacio cuando no hay urgencia. Si llegamos al 85 empatados, el cambio final es para un jugador que dispute los penales con confianza.</p>
+      </div>
+      <div>
+        <p style="font-size:13px; font-weight:600; color:var(--red); margin-bottom:6px;">Si vamos perdiendo por uno:</p>
+        <p>El 4-4-2 muta a 3-4-3. Morales sube como carrilero por su banda derecha. Hernandes entra por izquierda. Vamos al todo o nada. Zelarayán en cada tiro libre, Passerini y Sánchez al área. Preferimos perder buscando el empate que perder especulando.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ SECCIÓN 7: ESQUEMA 3-4-3 EMERGENCIA -->
+<div class="section">
+<div class="container">
+  <p class="section-title">07 · Plan de emergencia</p>
+  <h2 class="section-heading">Si vamos perdiendo: mutación a 3-4-3</h2>
+  <p class="section-lead">Si el marcador está en contra en los últimos 20 minutos, el equipo sale del 4-4-2 y adopta un 3-4-3 ofensivo. Morales sube como carrilero por su banda derecha, liberando el puesto en la línea de cuatro. Hernandes entra por izquierda. Es el todo o nada táctico.</p>
+
+  <p class="diagram-label">Diagrama 3-4-3 — configuración de emergencia</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg" width="100%">
+      <!-- CAMPO -->
+      <rect x="20" y="20" width="460" height="440" rx="6" class="field-bg"/>
+      <rect x="20" y="20" width="460" height="55" class="field-stripe"/>
+      <rect x="20" y="130" width="460" height="55" class="field-stripe"/>
+      <rect x="20" y="240" width="460" height="55" class="field-stripe"/>
+      <rect x="20" y="350" width="460" height="55" class="field-stripe"/>
+      <rect x="20" y="20" width="460" height="440" rx="6" class="field-line" stroke-width="1.8"/>
+      <line x1="20" y1="240" x2="480" y2="240" class="field-line"/>
+      <circle cx="250" cy="240" r="40" class="field-line-thin"/>
+      <rect x="80" y="20" width="340" height="120" class="field-line-thin"/>
+      <rect x="170" y="20" width="160" height="45" class="field-line-thin"/>
+      <circle cx="250" cy="90" r="2.5" fill="white" opacity=".4"/>
+      <rect x="80" y="340" width="340" height="120" class="field-line-thin"/>
+      <rect x="170" y="415" width="160" height="45" class="field-line-thin"/>
+
+      <!-- ZONA DE ATAQUE TOTAL -->
+      <rect x="21" y="21" width="458" height="220" fill="rgba(239,68,68,0.06)" rx="4"/>
+      <text x="250" y="255" class="zone-label" style="fill:rgba(239,68,68,0.5); font-size:9px; font-weight:700;">TODO ARRIBA · cada balón parado es una oportunidad</text>
+
+      <!-- 3-4-3 BELGRANO — posiciones corregidas -->
+      <!-- Arquero -->
+      <circle cx="250" cy="445" r="13" class="token-gk"/>
+      <text class="player-label" x="250" y="445" style="font-size:7px;">GK</text>
+      <text class="player-name" x="250" y="460">Cardozo</text>
+
+      <!-- Línea de 3 defensores:
+           Spörle (queda de central izq) · L.López (central) · Maldonado (central der)
+           Morales sube por DERECHA, su banda natural -->
+      <circle cx="140" cy="380" r="13" class="token-bel"/>
+      <text class="player-label" x="140" y="380" style="font-size:8px;">3</text>
+      <text class="player-name" x="140" y="397">Spörle</text>
+      <circle cx="250" cy="380" r="13" class="token-bel"/>
+      <text class="player-label" x="250" y="380" style="font-size:8px;">5</text>
+      <text class="player-name" x="250" y="397">L.López</text>
+      <circle cx="360" cy="380" r="13" class="token-bel"/>
+      <text class="player-label" x="360" y="380" style="font-size:8px;">4</text>
+      <text class="player-name" x="360" y="397">Maldonado</text>
+
+      <!-- Línea de 4 medios:
+           Hernandes (ext izq, su banda) · Longo (piv izq) · Sánchez (piv der) · Morales ↑ (carrilero der) -->
+      <circle cx="55" cy="300" r="13" class="token-bel-special"/>
+      <text class="player-label" x="55" y="300" style="fill:#1a1a00; font-size:7px;">Her</text>
+      <text class="player-name" x="55" y="317">Hernandes</text>
+      <circle cx="175" cy="300" r="13" class="token-bel"/>
+      <text class="player-label" x="175" y="300" style="font-size:8px;">6</text>
+      <text class="player-name" x="175" y="317">Longo</text>
+      <circle cx="325" cy="300" r="13" class="token-bel"/>
+      <text class="player-label" x="325" y="300" style="font-size:8px;">8</text>
+      <text class="player-name" x="325" y="317">Sánchez</text>
+      <circle cx="445" cy="300" r="13" class="token-bel-special"/>
+      <text class="player-label" x="445" y="300" style="fill:#1a1a00; font-size:8px;">2</text>
+      <text class="player-name" x="445" y="317">Morales ↑</text>
+
+      <!-- Línea de 3 atacantes:
+           Zelarayán (libre/izq) · Passerini (centro) · Rigoni (der, su banda) -->
+      <circle cx="100" cy="160" r="13" class="token-bel-special"/>
+      <text class="player-label" x="100" y="160" style="fill:#1a1a00; font-size:8px;">10</text>
+      <text class="player-name" x="100" y="178">Zelarayán</text>
+      <circle cx="250" cy="140" r="14" class="token-bel"/>
+      <text class="player-label" x="250" y="140">9</text>
+      <text class="player-name" x="250" y="158">Passerini</text>
+      <circle cx="400" cy="160" r="13" class="token-bel-special"/>
+      <text class="player-label" x="400" y="160" style="fill:#1a1a00; font-size:8px;">7</text>
+      <text class="player-name" x="400" y="178">Rigoni</text>
+
+      <!-- FLECHAS OFENSIVAS -->
+      <!-- Hernandes proyección izquierda -->
+      <path d="M 55,287 Q 60,230 80,175" class="arrow-atk"/>
+      <!-- Morales proyección derecha -->
+      <path d="M 445,287 Q 440,230 420,175" class="arrow-atk"/>
+      <!-- Zelarayán diagonal al área -->
+      <path d="M 100,147 Q 145,100 200,70" class="arrow-run" stroke-dasharray="5 3"/>
+      <!-- Passerini fija central -->
+      <path d="M 250,127 L 250,60" class="arrow-run" stroke-dasharray="5 3"/>
+      <!-- Rigoni por derecha al área -->
+      <path d="M 400,147 Q 355,100 305,65" class="arrow-run" stroke-dasharray="5 3"/>
+      <!-- Sánchez llegada tardía -->
+      <path d="M 325,287 Q 300,205 270,145" class="arrow-pass" stroke-dasharray="none"/>
+
+      <!-- LEYENDA -->
+      <rect x="22" y="415" width="155" height="45" rx="4" fill="rgba(0,0,0,0.5)"/>
+      <circle cx="35" cy="430" r="6" class="token-bel-special"/>
+      <text class="legend-text" x="47" y="430">Rol modificado / subido</text>
+      <text x="36" y="450" class="legend-text" style="fill:rgba(255,255,255,0.4); font-size:8px;">Izq SVG = banda izq · Der SVG = banda der</text>
+
+      <!-- TAG DE EMERGENCIA -->
+      <rect x="310" y="22" width="168" height="24" rx="4" fill="rgba(239,68,68,0.2)" stroke="rgba(239,68,68,0.4)" stroke-width="1"/>
+      <text x="394" y="37" style="fill:#f87171; font-size:10px; font-weight:700; text-anchor:middle; font-family:system-ui;">⚠ PLAN DE EMERGENCIA</text>
+    </svg>
+  </div>
+  <p class="diagram-caption">En el 3-4-3 de emergencia: Morales sube por su banda derecha como carrilero ofensivo, liberando un puesto en la defensa. Spörle queda de central izquierdo en la línea de tres. Hernandes entra por la izquierda (su posición habitual). Rigoni ocupa la banda derecha arriba junto a Passerini y Zelarayán. Sánchez llega tarde al área desde el mediocampo.</p>
+</div>
+</div>
+
+<!-- ============================================================ SECCIÓN 8: GESTIÓN MENTAL -->
+<div class="section">
+<div class="container">
+  <p class="section-title">08 · Gestión mental</p>
+  <h2 class="section-heading">Lo que pasa antes de salir al campo</h2>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>📅 La semana previa</h3>
+      <div class="instr">
+        <div class="instr-num">Mar-Mié</div>
+        <div class="instr-body">Trabajo táctico exclusivo sobre el mediocampo de Argentinos. Cada jugador ve video de <strong>Fattori, Oroz y López Muñoz</strong>. Saben qué hace cada uno y cómo reacciona.</div>
+      </div>
+      <div class="instr">
+        <div class="instr-num">Jue</div>
+        <div class="instr-body">Sesión de pelota parada ofensiva. <strong>Diez córners practicados, cinco tiros libres</strong>. Rigoni y Zelarayán los ejecutan hasta que sean automáticos.</div>
+      </div>
+      <div class="instr">
+        <div class="instr-num">Vie</div>
+        <div class="instr-body"><strong>Trabajo de penales</strong>. Los cinco ejecutores definidos antes del partido: Zelarayán, Rigoni, Vázquez, Passerini, Sánchez. Cardozo estudia los perfiles de Cortés y los posibles ejecutores de Argentinos.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🗣️ El vestuario antes de salir</h3>
+      <div class="instr">
+        <div class="instr-num">1°</div>
+        <div class="instr-body"><strong>No hablo de la final ni de River.</strong> Ese partido no existe todavía. El único partido que existe en el universo son estos 90 minutos en La Paternal.</div>
+      </div>
+      <div class="instr">
+        <div class="instr-num">2°</div>
+        <div class="instr-body">Les recuerdo que Argentinos jugó 120 minutos hace cuatro días. <strong>"En el segundo tiempo ustedes van a ser los frescos. Eso no lo compra nadie."</strong></div>
+      </div>
+      <div class="instr">
+        <div class="instr-num">3°</div>
+        <div class="instr-body">A <strong>Passerini y Rigoni por separado</strong>, antes de la charla grupal: "Si el árbitro cobra algo en tu contra, te alejás. El capitán habla. Vos te concentrás en jugar."</div>
+      </div>
+      <div class="instr">
+        <div class="instr-num">4°</div>
+        <div class="instr-body">La motivación extra que <em>no digo en voz alta</em> pero todos sienten: si ganamos, <strong>la final es en Córdoba</strong>. Nuestro estadio. Nuestra gente. Eso vale más que cualquier discurso.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ SECCIÓN 9: VEREDICTO -->
+<div class="section" style="border-bottom:none;">
+<div class="container">
+  <p class="section-title">09 · Apuesta táctica central</p>
+  <h2 class="section-heading">El resumen del plan</h2>
+
+  <div class="verdict">
+    <h2>La trampa que le tendemos a Argentinos</h2>
+    <p>El partido que Argentinos quiere jugar es: dominio de pelota, centros, Molina en el área, intensidad desde el inicio. El partido que le ofrecemos es exactamente el opuesto: bloque bajo los primeros 30 minutos, desgastar su intensidad, aparecer con Zelarayán cuando ya no tienen la misma energía, y resolver en pelota parada o penales si hace falta.</p>
+    <p>No es especulación pura: es obligarlos a jugar en condiciones que no eligieron. <strong>Argentinos en La Paternal con un rival que no se abre es mucho menos peligroso</strong> que Argentinos contra un rival que intenta igualar su ritmo desde el inicio.</p>
+    <p>Resultado más probable si el plan funciona: <strong>1-0 o empate con definición por penales</strong>. En penales, Cardozo preparado desde el martes y el orden de ejecución definido antes de patear el primero.</p>
+    <p><strong>La clave de todo el plan es una sola:</strong> llegar al minuto 60 con el marcador en 0-0 o 1-0 a favor. Si lo logramos, el desgaste físico de Argentinos y los cambios de Belgrano inclinan la balanza.</p>
+  </div>
+</div>
+</div>
+
+<footer>
+  <p>Plan táctico elaborado con razonamiento propio · Torneo Apertura LPF 2026 · Semifinal</p>
+  <p style="margin-top:6px; font-size:12px;">Belgrano · ⚓ Vamos Pirata</p>
+</footer>
+
+</body>
+</html>
