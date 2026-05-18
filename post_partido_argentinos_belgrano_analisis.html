@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post partido | Belgrano</title>
+<meta name="description" content="Analisis post partido de Argentinos vs Belgrano por la semifinal del Torneo Apertura 2026.">
+<meta property="og:title" content="Post partido | Belgrano">
+<meta property="og:description" content="Autoevaluacion del plan previo, momentos decisivos y balance tactico post partido.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b1220">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --bg: #0b1220;
+    --bg2: #111827;
+    --bg3: #1a2236;
+    --border: rgba(255,255,255,0.08);
+    --text: #e2e8f0;
+    --muted: #95a3b8;
+    --blue-light: #60a5fa;
+    --blue-dim: rgba(59,130,246,0.15);
+    --green: #22c55e;
+    --red: #ef4444;
+    --amber: #f59e0b;
+    --border-radius-lg: 14px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  a { color: var(--blue-light); }
+  nav {
+    background: rgba(17,24,39,0.92);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(16px);
+  }
+  .nav-logo {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -.3px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-tabs { display: flex; gap: 8px; margin-left: auto; }
+  .nav-tab {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .nav-tab:hover,
+  .nav-tab.active {
+    color: #dbeafe;
+    background: var(--blue-dim);
+    border-color: rgba(96,165,250,0.35);
+  }
+  .hero {
+    background: linear-gradient(135deg, #0b1220 0%, #0f1e3a 60%, #1a2236 100%);
+    padding: 52px 24px 38px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    margin: 0 0 12px;
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.12;
+    letter-spacing: -.04em;
+  }
+  .hero h1 span { color: var(--blue-light); }
+  .hero .sub {
+    color: var(--muted);
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 34px 20px 44px;
+  }
+  h2 {
+    font-size: clamp(20px, 4vw, 26px);
+    font-weight: 800;
+    color: var(--text);
+    margin: 0 0 14px;
+    letter-spacing: -.025em;
+  }
+  h3 {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--blue-light);
+    margin: 0 0 10px;
+  }
+  p, li { color: var(--muted); margin: 0 0 8px; }
+  p:last-child, li:last-child { margin-bottom: 0; }
+  strong { color: var(--text); }
+  ul { padding-left: 18px; margin: 0; }
+  li { margin-bottom: 6px; }
+  .section {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+  }
+  .section:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: 16px 18px;
+  }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+  .row:last-child { margin-bottom: 0; }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .green { background: var(--green); }
+  .red { background: var(--red); }
+  .amber { background: var(--amber); }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+  .tag-green { background: rgba(34,197,94,0.14); color: var(--green); }
+  .tag-red { background: rgba(239,68,68,0.14); color: #f87171; }
+  .tag-amber { background: rgba(245,158,11,0.14); color: #fbbf24; }
+  .tag-blue { background: rgba(96,165,250,0.14); color: var(--blue-light); }
+  .scorebox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 22px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    margin-bottom: 16px;
+  }
+  .team-name { font-size: 14px; font-weight: 800; color: var(--text); }
+  .score { font-size: 38px; font-weight: 900; color: var(--text); line-height: 1; margin-top: 6px; }
+  .sep { font-size: 24px; color: var(--muted); }
+  .timeline-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .min-badge {
+    font-size: 11px;
+    font-weight: 800;
+    background: var(--bg3);
+    color: var(--blue-light);
+    padding: 3px 9px;
+    border-radius: 20px;
+    min-width: 48px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .verdict {
+    border-left: 3px solid var(--blue-light);
+    padding: 18px 20px;
+    background: var(--bg2);
+    border-radius: var(--border-radius-lg);
+  }
+  .pct-bar {
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.08);
+    margin: 6px 0 12px;
+    overflow: hidden;
+  }
+  .pct-fill-green, .pct-fill-red, .pct-fill-amber { height: 100%; border-radius: 4px; }
+  .pct-fill-green { background: var(--green); }
+  .pct-fill-red { background: var(--red); }
+  .pct-fill-amber { background: var(--amber); }
+  footer {
+    text-align: center;
+    padding: 28px 20px;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 720px) {
+    nav { align-items: flex-start; flex-direction: column; gap: 10px; padding: 12px 14px; }
+    .nav-tabs { margin-left: 0; width: 100%; }
+    .nav-tab { flex: 1; text-align: center; font-size: 10px; padding: 8px 10px; }
+    .hero { padding: 34px 16px 28px; text-align: left; }
+    .hero h1 { font-size: 30px; }
+    .container { padding: 24px 14px 36px; }
+    .scorebox { align-items: stretch; flex-direction: column; gap: 8px; }
+    .sep { display: none; }
+    .grid2 { grid-template-columns: 1fr; }
+    .card { padding: 14px; }
+    .timeline-item { gap: 10px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="./">Belgrano</a>
+  <div class="nav-tabs" aria-label="Secciones del sitio">
+    <a class="nav-tab" href="plan_partido_belgrano_dt2.html">Plan tactico</a>
+    <a class="nav-tab active" href="post_partido_argentinos_belgrano_analisis.html">Post partido</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <p class="tag tag-blue">Semifinal Torneo Apertura 2026 � Analisis posterior</p>
+  <h1>Argentinos 1?1 Belgrano<br><span>Belgrano gana 4?3 en penales</span></h1>
+  <p class="sub">Autoevaluacion del plan previo, lectura del partido real y balance de los aciertos y errores tacticos.</p>
+</header>
+
+<main class="container">
+  <section class="section">
+    <h3>Resultado final � Semifinal Torneo Apertura 2026</h3>
+    <div class="scorebox">
+      <div style="text-align:center;">
+        <div class="team-name">Argentinos Juniors</div>
+        <div class="score">1</div>
+        <p style="font-size:12px;">Jainikoski 6'</p>
+      </div>
+      <div class="sep">?</div>
+      <div style="text-align:center;">
+        <div class="team-name">Belgrano</div>
+        <div class="score">1</div>
+        <p style="font-size:12px;">N. Fernandez 90+4'</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-bottom:16px;">
+      <span class="tag tag-blue">Penales: Argentinos 3 ? Belgrano 4</span>
+      <p style="font-size:13px; margin-top:6px;">Cardozo le atajo a Enzo Perez � Hernandes definio el 4-3 � Belgrano a la final vs River en el Kempes</p>
+    </div>
+
+    <h3>Los momentos decisivos</h3>
+    <div class="card">
+      <div class="timeline-item">
+        <span class="min-badge">6'</span>
+        <p>Jainikoski corona una jugada de Morales-Lescano por la derecha. Primer gol en primera division. Argentinos 1-0.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="min-badge">14'</span>
+        <p>Lesion de Lisandro Lopez. Sale antes del minuto 15. Falcon entra. Belgrano pierde su central titular mas importante en el peor momento.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="min-badge">45'</span>
+        <p>Prieto tuvo el 2-0 antes del descanso. Cardozo lo ahoga. El partido habria sido otro con ese gol.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="min-badge">2T</span>
+        <p>Belgrano crece. Argentinos se va quedando fisicamente. El desgaste de los 120' empieza a notarse exactamente donde se predijo.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="min-badge">89'</span>
+        <p>Zelarayan remata al palo. La siguiente jugada: Vazquez al area, Passerini baja de pecho, Uvita Fernandez la mete. 1-1 agonico.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="min-badge">Pen.</span>
+        <p>Fallan primero: Veron (ARG) y Zelarayan (BEL). Cortes ataja a Vazquez y al Chino. Cardozo ataja a Enzo Perez. Hernandes define el 4-3. Belgrano a la final.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Autoevaluacion de mi analisis previo</h2>
+    <h3>Lo que acerte</h3>
+    <div class="grid2" style="margin-bottom:14px;">
+      <div class="card"><span class="tag tag-green">Resultado global</span><p>Predije "empate probable -> penales" como segundo escenario mas verosimil, y Belgrano levemente favorito si llegaba ahi. Ocurrio exactamente eso.</p></div>
+      <div class="card"><span class="tag tag-green">Cardozo en penales</span><p>Senale que Cardozo estaba en mejor momento que Cortes y que en penales Belgrano tenia ventaja. Cardozo fue el heroe de la serie con la atajada a Enzo Perez.</p></div>
+      <div class="card"><span class="tag tag-green">El desgaste fisico</span><p>Marque que los 120' de Argentinos vs Huracan iban a notarse desde el segundo tiempo. Exactamente asi: el local se fue apagando y Belgrano crecio desde el 60'.</p></div>
+      <div class="card"><span class="tag tag-green">Partido trabado bajo el 2.5</span><p>Pronostique "under 2.5 goles" y pocas ocasiones en tiempo reglamentario. El partido termino 1-1 con escasas situaciones claras hasta el final.</p></div>
+      <div class="card"><span class="tag tag-green">Zelarayan contenido en el 1er tiempo</span><p>Predije que si Fattori y Oroz lo neutralizaban, Belgrano no crearia. Zelarayan estuvo opacado en el primer tiempo, exactamente lo que plantee como riesgo.</p></div>
+      <div class="card"><span class="tag tag-green">Vazquez y Hernandes como revulsivos</span><p>Plantee a Vazquez y Hernandes como los cambios que cambiarian la dinamica. Vazquez genero el empate con el pase al area, Hernandes definio en penales.</p></div>
+    </div>
+
+    <h3>Lo que me equivoque</h3>
+    <div class="grid2" style="margin-bottom:14px;">
+      <div class="card"><span class="tag tag-red">Gol de Argentinos al minuto 6</span><p>No anticipe que el local podia abrir tan temprano. Habia marcado que los primeros 30' eran el mayor riesgo de Belgrano, pero un gol al minuto 6 era un escenario aun peor.</p></div>
+      <div class="card"><span class="tag tag-red">Molina como protagonista</span><p>Todo mi analisis del peligro de Argentinos giraba alrededor de Molina. El gol lo hizo Jainikoski, juvenil de 18 anos. Molina quedo contenido y no gravito.</p></div>
+      <div class="card"><span class="tag tag-red">La lesion de Lisandro Lopez</span><p>Imprevisible, pero afecto directamente la linea defensiva que yo consideraba una fortaleza de Belgrano. Falcon tuvo que improvisar en una semifinal.</p></div>
+      <div class="card"><span class="tag tag-red">Zelarayan en penales</span><p>Lo puse como primer ejecutor del equipo y uno de los mas seguros. Erro su penal. Belgrano igual gano, pero ese guion no se dio.</p></div>
+      <div class="card"><span class="tag tag-amber">Rigoni como factor</span><p>Le asigne un rol ofensivo importante. Estuvo mas contenido de lo esperado, con amarilla. No fue determinante en el juego, aunque convirtio su penal.</p></div>
+      <div class="card"><span class="tag tag-amber">Passerini como referencia</span><p>Su vuelta reordeno algo del ataque y bajo el pecho para el empate de Uvita, pero en el juego fue mas discreto de lo que esperaba.</p></div>
+    </div>
+
+    <div class="card">
+      <h3>Precision global del analisis previo</h3>
+      <div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap;">
+        <div style="flex:1; min-width:200px;">
+          <p style="font-size:12px;">Predicciones correctas</p>
+          <div class="pct-bar"><div class="pct-fill-green" style="width:62%;"></div></div>
+          <p style="font-size:12px;">Parcialmente correctas</p>
+          <div class="pct-bar"><div class="pct-fill-amber" style="width:15%;"></div></div>
+          <p style="font-size:12px;">Incorrectas o no anticipadas</p>
+          <div class="pct-bar"><div class="pct-fill-red" style="width:23%;"></div></div>
+        </div>
+        <div style="max-width:280px;">
+          <p style="font-size:13px;">El marco general fue correcto: partido parejo, segundo tiempo de Belgrano, definicion en penales con Cardozo como diferencia. Los detalles finos no se dieron como esperaba.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Nicolas Diez (Argentinos) � que hizo bien y que mal</h2>
+    <div class="grid2">
+      <div>
+        <h3>Aciertos</h3>
+        <div class="row"><div class="dot green"></div><p><strong>El 4-3-3 con Jainikoski.</strong> Apostar por el juvenil de 18 anos en una semi fue riesgoso y le salio perfecto: hizo el gol a los 6'.</p></div>
+        <div class="row"><div class="dot green"></div><p><strong>El control del primer tiempo.</strong> Argentinos fue superior en los primeros 45'. Neutralizo a Zelarayan, monopolizo la pelota y creo las situaciones mas claras.</p></div>
+        <div class="row"><div class="dot green"></div><p><strong>La presion alta inicial.</strong> La localia y la intensidad del arranque fueron exactamente lo que necesitaba para capitalizar el comienzo.</p></div>
+      </div>
+      <div>
+        <h3>Errores</h3>
+        <div class="row"><div class="dot red"></div><p><strong>No liquidar el partido.</strong> Tuvo el 2-0 antes del descanso. Si ese gol entra, la historia cambia.</p></div>
+        <div class="row"><div class="dot red"></div><p><strong>Gestion del segundo tiempo.</strong> Con el 1-0, el equipo bajo el ritmo y Belgrano crecio. No supo administrar la ventaja.</p></div>
+        <div class="row"><div class="dot red"></div><p><strong>Los cambios defensivos tardios.</strong> Cuando Belgrano apreto, los cambios no lograron recuperar el control.</p></div>
+        <div class="row"><div class="dot amber"></div><p><strong>La tanda de penales.</strong> Cortes atajo dos, pero Argentinos fallo tres. No hubo preparacion visible para esa instancia.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Ricardo Zielinski (Belgrano) � que hizo bien y que mal</h2>
+    <div class="grid2">
+      <div>
+        <h3>Aciertos</h3>
+        <div class="row"><div class="dot green"></div><p><strong>Aguantar sin cambiar todo.</strong> Belgrano fue inferior los primeros 45', pero no se desespero. El Ruso leyo que el partido tendria una segunda historia.</p></div>
+        <div class="row"><div class="dot green"></div><p><strong>Los cambios ofensivos.</strong> Vazquez y Hernandes entraron y cambiaron la dinamica. Vazquez genero el empate, Hernandes definio en penales.</p></div>
+        <div class="row"><div class="dot green"></div><p><strong>Cardozo para penales.</strong> Llego preparado y atajo a Enzo Perez en el momento mas decisivo.</p></div>
+        <div class="row"><div class="dot green"></div><p><strong>Uvita Fernandez como 9 alternativo.</strong> Entro, la bajo de pecho Passerini, la metio. Fue una definicion de enorme personalidad.</p></div>
+      </div>
+      <div>
+        <h3>Errores</h3>
+        <div class="row"><div class="dot red"></div><p><strong>El primer tiempo fue muy malo.</strong> Belgrano no piso el area rival durante los primeros 45'. Fue superado tacticamente en el inicio.</p></div>
+        <div class="row"><div class="dot red"></div><p><strong>Sin respuesta rapida al 1-0.</strong> Recibir el gol al minuto 6 y no generar nada durante 40 minutos mas fue un riesgo altisimo.</p></div>
+        <div class="row"><div class="dot amber"></div><p><strong>Zelarayan como primer pateador.</strong> La apuesta no salio. El Chino fallo y dio ventaja inicial a Argentinos.</p></div>
+        <div class="row"><div class="dot amber"></div><p><strong>La lesion de Lisandro Lopez lo condiciono.</strong> No es su error, pero perder al central titular en el minuto 14 fue un golpe enorme.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="verdict">
+      <h2>La historia real del partido</h2>
+      <p>Fue exactamente el tipo de partido que los analisis previos sugerian que podia ser: dos equipos con muy poca diferencia entre si, definido por detalles, que termino en penales. Lo que no anticipe fue la secuencia: Belgrano jugo peor el primer tiempo del que esperaba, recibio un gol muy temprano de un jugador inesperado y sobrevivio gracias a Cardozo.</p>
+      <p>El empate agonico de Uvita fue la consecuencia de todo lo que Belgrano hizo en la segunda parte: crecer cuando el local se apago, llegar con revulsivos frescos y no rendirse. En penales, el guion divergio en Zelarayan, pero la preparacion de Cardozo fue el factor diferencial.</p>
+      <p>El plan previo resulto bastante alineado con lo que ocurrio en el segundo tiempo y en penales. El error mayor fue no prever que el partido iba a ser tan duro en el primer tiempo, con Belgrano practicamente sin existir ofensivamente durante 45 minutos.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Analisis post partido � Belgrano a la final en el Kempes</p>
+</footer>
+</body>
+</html>
